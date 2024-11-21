@@ -10,11 +10,11 @@ The solutions require NodeJS version 22.1.0 to run. In addition you need a coupl
 
 To run a specific solution you can use the following command:
 ```bash
-npm run start solve <year>/<day>/<part>
+npm run solve <year>/<day>/<part>
 ```
 For instance to run the solution for day 2, part 1 you need the command:
 ```bash
-npm run start solve 2015/2/1
+npm run solve 2015/2/1
 ```
 
 ## Puzzle input
