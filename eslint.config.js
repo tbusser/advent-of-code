@@ -22,7 +22,7 @@ export default [
 			// This rule enforces a consistent indentation style.
 			'@stylistic/indent': ['error', 'tab'],
 
-			'@stylistic/max-len': ['error', { code: 120, comments: 80 }],
+			'@stylistic/max-len': ['error', { code: 120, comments: 80, ignoreUrls: true }],
 
 			'@stylistic/padding-line-between-statements': ['error',
 				{ blankLine: 'always', prev: '*', next: 'return' }
