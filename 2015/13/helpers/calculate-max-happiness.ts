@@ -37,6 +37,7 @@ function findSeatingArrangements(graph: Graph, startNode: string) {
 			// the current seating arrangement.
 			if (currentPath.length === maxPathLength) {
 				happinessScores.push(newHappiness);
+
 				return;
 			}
 

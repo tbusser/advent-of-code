@@ -19,6 +19,7 @@ async function solver(input: string): Promise<number> {
 
 		if (solution.length === result.containerCount) {
 			result.count++;
+
 			return;
 		}
 

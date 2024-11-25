@@ -24,6 +24,10 @@ export default [
 
 			'@stylistic/max-len': ['error', { code: 120, comments: 80 }],
 
+			'@stylistic/padding-line-between-statements': ['error',
+				{ blankLine: 'always', prev: '*', next: 'return' }
+			],
+
 			// This rule enforces the consistent use of single quotes.
 			'@stylistic/quotes': ['error', 'single'],
 

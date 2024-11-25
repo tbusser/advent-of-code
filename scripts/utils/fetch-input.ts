@@ -19,6 +19,7 @@ async function fetchInput(url: string): Promise<string> {
 	});
 
 	const test = await data.text();
+
 	return test.trimEnd();
 }
 

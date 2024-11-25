@@ -5,6 +5,7 @@ import { parseInput } from './helpers/parse-input.js';
 
 async function solver(input: string): Promise<number> {
 	const ingredients = parseInput(input);
+
 	return findBestScoringCookie(ingredients, 100, 500);
 }
 
