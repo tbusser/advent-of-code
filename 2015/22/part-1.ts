@@ -1,0 +1,28 @@
+import { fight } from './helpers/fight.js';
+import { initializeGame } from './helpers/game-state.js';
+import { parseInput } from './helpers/parse-input.js';
+import { PlayerStats } from './helpers/types.js';
+
+/* ========================================================================== */
+
+const player: PlayerStats = {
+	hitPoints: 50,
+	manaPool: 500
+};
+
+/* ========================================================================== */
+
+async function solver(input: string): Promise<number> {
+	const boss = parseInput(input);
+
+	const initialGameState = initializeGame(boss, player);
+
+	return fight(initialGameState);
+}
+
+/* ========================================================================== */
+
+export default {
+	prompt: 'Least amount of mana needed to win the fight',
+	solver
+} satisfies Solution;
