@@ -5,7 +5,6 @@ import { Coordinate, parseInput } from './helpers/parse-input.js';
 function findCodeAtCoordinate(coordinate: Coordinate): number {
 	let column = 1;
 	let row = 1;
-	let maxRow = 1;
 	let value = 20151125;
 
 	while (true) {
@@ -18,8 +17,7 @@ function findCodeAtCoordinate(coordinate: Coordinate): number {
 		value = (value * 252533) % 33554393;
 
 		if (row <= 0) {
-			maxRow++;
-			row = maxRow;
+			row = column;
 			column = 1;
 		}
 	}
