@@ -23,7 +23,8 @@ if (puzzleId === undefined) {
 	process.exit(1);
 }
 
-// Split up the argument into its parts and convert them to numbers.
+// Split up the argument into its parts, this should give the year, date,
+// and part.
 const [year, day, part] = puzzleId.split('/');
 
 // Make sure there is a matching year folder in the current directory.
@@ -39,10 +40,13 @@ validatePath(
 	`Day ${paddedDay} does not exist within ${year}, please provide a valid day.`
 );
 
-// Make sure there is a matching part file in the day folder, parts should
-// always be one digit long.
+// Make sure there is a matching part file in the day folder. The part will be
+// added to the prefix "part-". Every solution file should start with this.
 const fileName = path.join(dayFolder, `part-${part}.ts`);
-validatePath(fileName, `Part ${part} does not exist in ${dayFolder}, please provide a valid part.`);
+validatePath(
+	fileName,
+	`Part "part-${part}.ts" does not exist in ${dayFolder}. Only the text after "part-" and before ".ts" has to be provided.`
+);
 
 // Start the script for the provided puzzle ID.
 const { default: solution } = await import(path.resolve(process.cwd(), fileName));
