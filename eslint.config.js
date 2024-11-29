@@ -3,6 +3,7 @@ import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import stylistic from '@stylistic/eslint-plugin';
 
+/* ========================================================================== */
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -22,11 +23,18 @@ export default [
 			// This rule enforces a consistent indentation style.
 			'@stylistic/indent': ['error', 'tab'],
 
-			'@stylistic/max-len': ['error', { code: 120, comments: 80, ignoreUrls: true }],
+			'@stylistic/max-len': ['error', {
+				code: 120,
+				comments: 80,
+				ignoreTemplateLiterals: true,
+				ignoreUrls: true
+			}],
 
-			'@stylistic/padding-line-between-statements': ['error',
-				{ blankLine: 'always', prev: '*', next: 'return' }
-			],
+			'@stylistic/padding-line-between-statements': ['error', {
+				blankLine: 'always',
+				next: 'return',
+				prev: '*',
+			}],
 
 			// This rule enforces the consistent use of single quotes.
 			'@stylistic/quotes': ['error', 'single'],
