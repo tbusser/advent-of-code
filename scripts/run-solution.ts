@@ -24,15 +24,15 @@ if (puzzleId === undefined) {
 }
 
 // Split up the argument into its parts and convert them to numbers.
-const [year, day, part] = puzzleId.split('/').map(Number);
+const [year, day, part] = puzzleId.split('/');
 
 // Make sure there is a matching year folder in the current directory.
-const yearFolder = path.relative(process.cwd(), year.toString());
+const yearFolder = path.relative(process.cwd(), year);
 validatePath(yearFolder, `Year ${year} does not exist, please provide a valid year.`);
 
 // Make sure there is a matching day folder in the year folder, days should
 // always be two digits long.
-const paddedDay = day.toString().padStart(2, '0');
+const paddedDay = day.padStart(2, '0');
 const dayFolder = path.join(yearFolder, paddedDay);
 validatePath(
 	dayFolder,
