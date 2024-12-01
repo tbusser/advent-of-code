@@ -13,7 +13,7 @@ async function solver(input: string): Promise<number> {
 	});
 
 	return left.reduce<number>(
-		(total, locationId) => total + Math.abs(locationId * (locationCount[locationId] ?? 0)),
+		(total, locationId) => total + (locationId * (locationCount[locationId] ?? 0)),
 		0
 	);
 }
