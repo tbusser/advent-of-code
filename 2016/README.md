@@ -4,7 +4,7 @@ A list of the challenges for 2016. I've rated each challenge on how difficult I 
 
 |                                        | Part 1 | Part 2 |
 | -------------------------------------- | ------ | ------ |
-| [Day 1: No Time for a Taxicab](./01/): | Easy   | Medium |
+| [Day 1: No Time for a Taxicab](./01/)  | Easy   | Medium |
 
 ## Legend
 

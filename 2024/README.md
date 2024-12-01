@@ -4,7 +4,7 @@ A list of the challenges for 2024. I've rated each challenge on how difficult I 
 
 |                                     | Part 1 | Part 2 |
 | ----------------------------------- | ------ | ------ |
-| [Day 1: Historian Hysteria](./01/): | Easy   | Easy   |
+| [Day 1: Historian Hysteria](./01/)  | Easy   | Easy   |
 
 ## Legend
 
