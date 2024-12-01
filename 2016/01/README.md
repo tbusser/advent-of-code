@@ -1,5 +1,16 @@
 # Day 1: No Time for a Taxicab
 
+The first part was not much of a problem though it took a little while to come to the solution I used. I figured an array for the directions would make it easy to alter and keep track of the current direction. By using the ten digit for the vertical movement and the one digit for the horizontal movement I could write code for the movements which was the same for any direction.
+
+Part two posed a bit of a problem, after reading the description it was unclear to me how the distance was only `4` as I got `8`. After searching for a hint I found someone on Reddit with the exact same problem I had. A visited location is not just where the direction changes but any position in between also counts.
+
+Once the description was clear the solution required a small modification to part 1 to keep track of all the points where the direction changes instead of just the last visited point. Now it was just checking if lines were intersecting. I looked at some math but figured it would be overkill as the challenge only deals with perpendicular lines.
+
+Rating: **Easy** / **Medium**
+
+## Challenge description
+
+### Part One
 Santa's sleigh uses a very high-precision clock to guide its movements, and the clock's oscillator is regulated by stars. Unfortunately, the stars have been stolen... by the Easter Bunny. To save Christmas, Santa needs you to retrieve all *fifty stars* by December 25th.
 
 Collect stars by solving puzzles. Two puzzles will be made available on each day in the Advent calendar; the second puzzle is unlocked when you complete the first. Each puzzle grants *one star*. Good luck!
@@ -18,7 +29,7 @@ For example:
 
 How many blocks away is Easter Bunny HQ?
 
-## Part Two
+### Part Two
 Then, you notice the instructions continue on the back of the Recruiting Document. Easter Bunny HQ is actually at the first location you visit twice.
 
 For example, if your instructions are `R8, R4, R4, R8`, the first location you visit twice is 4 blocks away, due East.
