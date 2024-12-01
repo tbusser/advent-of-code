@@ -1,6 +1,6 @@
 # Day 2: Bathroom Security
 
-For the first part I used a number to keep track of the position on the keypad. Following the instructions meant check of the number could be modified in the desired direction, nothing a couple of `if` statements couldn't handle.
+For the first part I used a number to keep track of the position on the keypad. Following the instructions meant checking if the number could be modified in the desired direction, nothing a couple of `if` statements couldn't handle.
 
 Part 2 made it clear my solution didn't scale, it could not be adapted to the new situation. I figured a graph would work well. Instead of building an proper graph class I just created a `const` per key and manually linked all the keys to their neighbors. This was easy enough given the small number of keys.
 
