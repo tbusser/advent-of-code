@@ -1,36 +1,25 @@
 import { decryptName } from './helpers/decrypt.js';
+import { generateChecksum } from './helpers/generate-checksum.js';
 import { parseInput } from './helpers/parse-input.js';
 
 /* ========================================================================== */
 
-function generateChecksum(encryptedName: string): string {
-	const name = encryptedName.replace(/-/g, '');
-	const occurrences: Record<string, number> = {};
+/**
+ * The name of room was acquired by logging all the decrypted names and looking
+ * for a name which sounds like a room where someone would store objects from
+ * the north pole.
+ */
+const storageRoomName = 'northpole object storage';
 
-	for (const letter of name) {
-		occurrences[letter] = (occurrences[letter] ?? 0) + 1;
-	}
-
-	const sortedLetters = Object.keys(occurrences).sort((letter, otherLetter) => {
-		const difference = occurrences[otherLetter] - occurrences[letter];
-
-		if (difference !== 0) return difference;
-
-		return letter < otherLetter ? -1 : 1;
-	});
-
-	return sortedLetters.slice(0, 5).join('');
-}
-
-
-/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
 
 async function solver(input: string): Promise<number> {
 	const rooms = parseInput(input);
 
 	const realRooms = rooms.filter(room => room.checksum === generateChecksum(room.encryptedName));
+
 	for (const room of realRooms) {
-		if (decryptName(room.encryptedName, room.sectorId) === 'northpole object storage') {
+		if (decryptName(room.encryptedName, room.sectorId) === storageRoomName) {
 			return room.sectorId;
 		}
 	}
