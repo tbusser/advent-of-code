@@ -2,11 +2,12 @@
 
 A list of the challenges for 2016. I've rated each challenge on how difficult I found it so solve. For a description of what challenges I've faced, see the README for a specific day.
 
-|                                          | Part 1 | Part 2 |
-| ---------------------------------------- | ------ | ------ |
-| [Day 1: No Time for a Taxicab](./01/)    | Easy   | Medium |
-| [Day 2: Bathroom Security](./02/)        | Easy   | Easy   |
-| [Day 3: Squares With Three Sides](./03/) | Easy   | Easy   |
+|                                            | Part 1 | Part 2 |
+| ------------------------------------------ | ------ | ------ |
+| [Day 1: No Time for a Taxicab](./01/)      | Easy   | Medium |
+| [Day 2: Bathroom Security](./02/)          | Easy   | Easy   |
+| [Day 3: Squares With Three Sides](./03/)   | Easy   | Easy   |
+| [Day 4: Security Through Obscurity](./04/) | Easy   | Easy   |
 
 ## Legend
 
