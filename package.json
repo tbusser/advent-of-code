@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint",
     "lint:fix": "eslint --fix",
+    "scaffold": "tsx ./scripts/scaffold.ts",
     "solve": "tsx ./scripts/run-solution.ts",
     "test": "vitest run"
   },
