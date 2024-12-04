@@ -4,6 +4,7 @@ export type Direction = 'up' | 'up-left' | 'up-right' | 'left' | 'down' | 'down-
 
 export type Neighbor<T = string> = Coordinate & {
 	direction: Direction;
+	index: number;
 	value: T;
 };
 
@@ -154,6 +155,7 @@ export class Grid<T = string> {
 				neighbors.push({
 					...neighborCoordinate,
 					direction,
+					index: this.coordinateToIndex(neighborCoordinate),
 					value: this.grid[this.coordinateToIndex(neighborCoordinate)]
 				});
 			}
