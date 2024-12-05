@@ -4,6 +4,8 @@ Today was a fun challenge. It seemed hard at first but as I got started it turne
 
 Part 2 could reuse the solution of part 1 to filter out the updates which are invalid. Once I had the list of invalid updates I had to figure out how to make them valid. By testing each rule I would find the first rule which was not being met. Swapping the values of the rule in the update would ensure the rule became valid. Once the swap is done I check if the update is valid and if not I recheck all the rules and swap the values of the next invalid rule. This approach is perhaps not the optimal solution but it works so it must not be stupid.
 
+Addendum: I've added an alternative solution which solves part 2 way quicker than my own implementation did. The way the rules are stored, as a dictionary, is a large part of what makes this solution so incredibly fast. I wish I had come up with it myself but all credit goes to [Rob Habraken](https://github.com/robhabraken/advent-of-code-2024).
+
 Rating: **Easy**
 
 ## Challenge description
