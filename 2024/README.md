@@ -8,6 +8,7 @@ A list of the challenges for 2024. I've rated each challenge on how difficult I 
 | [Day 2: Red-Nosed Reports](./02/)   | Easy   | Easy   |
 | [Day 3: Mull It Over](./03/)        | Easy   | Easy   |
 | [Day 4: Ceres Search](./04/)        | Easy   | Easy   |
+| [Day 5: Print Queue](./05/)         | Easy   | Easy   |
 
 ## Legend
 
