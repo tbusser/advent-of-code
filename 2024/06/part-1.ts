@@ -7,7 +7,7 @@ async function solver(input: string): Promise<number> {
 	const parsedInput = parseInput(input);
 	const grid = Grid.createInstance(parsedInput);
 
-	return grid.countVisitedPositions();
+	return grid.findVisitedPositions().size;
 }
 
 /* ========================================================================== */
