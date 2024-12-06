@@ -1,6 +1,8 @@
 # Day 6: Guard Gallivant
 
-Today was fun! It certainly increased the difficulty of AoC by a notch compared to the previous days. Part 1 was not to hard, I could again rely on my Grid to do some of the heavy lifting. I started with padding the input with extra cells on the outside, this makes it a lot easier to test when the guard leaves the area. Now I can just test if the value of the cell is my padding value. Once that was done I created subclass for my Grid and worked on a method to follow the instructions. I used a `Set` to keep track of the visited positions, this way I don't have to worry about counting the same position twice in case the guard visits the same position more than once. I used my `neighbors` filter to only get the direction the guard is facing and a little helper to determine the next direction after taking a 90º right turn.
+Today was fun! It certainly increased the difficulty of AoC by a notch compared to the previous days. Part 1 was not to hard, I could again rely on my Grid to do some of the heavy lifting. I started with padding the input with extra cells on the outside, this makes it a lot easier to test when the guard leaves the area. Now I can just test if the value of the cell is my padding value.
+
+Once that was done I created subclass for my Grid and worked on a method to follow the instructions. I used a `Set` to keep track of the visited positions, this way I don't have to worry about counting the same position twice in case the guard visits the same position more than once. I used my `neighbors` filter to only get the direction the guard is facing and a little helper to determine the next direction after taking a 90º right turn.
 
 With part 1 done it was time for part 2, this threw me for a bit of a loop (pun intended). At first I wasn't quite sure where to start so I allowed myself to take a breather before diving into the problem. After a bit of thinking I figured the challenge could be broken down into two parts:
 1) Detect when the guard is stuck in a loop
@@ -9,12 +11,15 @@ With part 1 done it was time for part 2, this threw me for a bit of a loop (pun 
 Problem 1 seemed to easiest so I decided to tackle that first. I thought about what makes a loop and arrived at a definition of making a turn at the same place as 4 turns ago, like this:
 
 ```
-1----2
-|    |
-4----3
+1--->2
+^    |
+|    v
+4<---3
 ```
 
-When making a turn again at position one and the last turn at position one is exactly 4 turns ago a loop is detected. This held up till I got to example 5 of the challenge description, this was loop but not like one outlined above. Figuring this approach would get me nowhere had me go back to defining for myself what makes something a loop. Then it hit me. A loop occurs when the guard enters a position for the second **from the same direction**. Visiting a position more than once is not a problem, the guard can come from below and enter the same position again from the right. But when the guard enters the position from the same direction this is only possible if she followed the same path! With this little insight I created a copy of my logic for part 1, added the direction to the set of visited positions and manually altered to input to match the 6 cases from the challenge description. All 6 loops were detected, so that concluded solving the first problem.
+When making a turn again at position 1 and the last turn at position 1 is exactly 4 turns ago, a loop is detected. This held up till I got to example 5 of the challenge description, this was loop but not like one outlined above. Figuring this approach would get me nowhere had me go back to defining for myself what makes something a loop. Then it hit me. A loop occurs when the guard enters a position for the second time **from the same direction**.
+
+Visiting a position more than once is not a problem, the guard can come from below and enter the same position again from the right. But when the guard enters the position from the same direction this is only possible if she followed the same path! With this little insight I created a copy of my logic for part 1, added the direction to the set of visited positions and manually altered to input to match the 6 cases from the challenge description. All 6 loops were detected, so that concluded solving the first problem.
 
 Now on to problem 2, figuring out where to put an obstacle which causes a loop. After same thinking it dawned on me the obstacle has to be placed on a position the guard visits are else it wouldn't affect the path the guard will follow. Luckily part 1 already collected the positions visited by the guard so I just had to adjust the method to return me the set instead of only its size. With the visited positions I figured I would just try blocking every visited position one-by-one and see which ones would cause a loop. This was the easy part, I found the answer to part 2 in no time.
 
