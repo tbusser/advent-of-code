@@ -73,8 +73,6 @@ export class Grid extends BaseGrid {
 		const visitedPositions = new Set<number>([guard.position]);
 
 		while (true) {
-			// The neighbors will always be returned in the same order as they
-			// appear in the filter.
 			const nextPosition = this.neighbors(guard.position, guard.directions)[0];
 
 			if (nextPosition.value === endPosition) {
