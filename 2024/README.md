@@ -10,6 +10,7 @@ A list of the challenges for 2024. I've rated each challenge on how difficult I 
 | [Day 4: Ceres Search](./04/)        | Easy    | Easy    |
 | [Day 5: Print Queue](./05/)         | Easy    | Easy    |
 | [Day 6: Guard Gallivant](./06/)     | Easy    | Medium  |
+| [Day 7: Bridge Repair](./07/)       | Medium  | Easy    |
 
 ## Legend
 
