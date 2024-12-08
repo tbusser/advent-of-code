@@ -2,15 +2,16 @@
 
 A list of the challenges for 2024. I've rated each challenge on how difficult I found it so solve. For a description of what challenges I've faced, see the README for a specific day.
 
-|                                     | Part 1  | Part 2  |
-| ----------------------------------- | ------- | ------- |
-| [Day 1: Historian Hysteria](./01/)  | Easy    | Easy    |
-| [Day 2: Red-Nosed Reports](./02/)   | Easy    | Easy    |
-| [Day 3: Mull It Over](./03/)        | Easy    | Easy    |
-| [Day 4: Ceres Search](./04/)        | Easy    | Easy    |
-| [Day 5: Print Queue](./05/)         | Easy    | Easy    |
-| [Day 6: Guard Gallivant](./06/)     | Easy    | Medium  |
-| [Day 7: Bridge Repair](./07/)       | Medium  | Easy    |
+|                                      | Part 1  | Part 2  |
+| ------------------------------------ | ------- | ------- |
+| [Day 1: Historian Hysteria](./01/)   | Easy    | Easy    |
+| [Day 2: Red-Nosed Reports](./02/)    | Easy    | Easy    |
+| [Day 3: Mull It Over](./03/)         | Easy    | Easy    |
+| [Day 4: Ceres Search](./04/)         | Easy    | Easy    |
+| [Day 5: Print Queue](./05/)          | Easy    | Easy    |
+| [Day 6: Guard Gallivant](./06/)      | Easy    | Medium  |
+| [Day 7: Bridge Repair](./07/)        | Medium  | Easy    |
+| [Day 8: Resonant Collinearity](./08) | Easy    | Easy    |
 
 ## Legend
 
