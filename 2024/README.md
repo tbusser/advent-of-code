@@ -12,6 +12,7 @@ A list of the challenges for 2024. I've rated each challenge on how difficult I 
 | [Day 6: Guard Gallivant](./06/)      | Easy    | Medium  |
 | [Day 7: Bridge Repair](./07/)        | Medium  | Easy    |
 | [Day 8: Resonant Collinearity](./08) | Easy    | Easy    |
+| [Day 9: Disk Fragmenter](./09/)      | Easy    | Easy    |
 
 ## Legend
 
