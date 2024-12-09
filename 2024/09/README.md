@@ -12,7 +12,7 @@ The start of part 2 was the same as part 1, reading the description multiple tim
 
 Writing the code was not too difficult except for the free spaces. I started working backwards through the files and per file forwards through the empty spaces. This part of the challenge had the same issue as part 1, accounting for partially used free spaces. Initially I was decreasing the number in the parsed input to indicate how many spaces remained free but this lead to all wrong results. After some thinking I realized it was because altering the number meant all items afterwards would get the wrong offset. Once I kept track of the remaining available blocks of a free range in a separate object and left the parsed input value alone the answer I got was correct.
 
-Rating: **<Easy>**
+Rating: **Easy**
 
 ## Challenge description
 
