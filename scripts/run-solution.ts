@@ -49,9 +49,9 @@ validatePath(
 );
 
 // Start the script for the provided puzzle ID.
-const { default: solution } = await import(path.resolve(process.cwd(), fileName));
+const { default: solution } = await import(path.resolve(process.cwd(), fileName)) as { default: Solution };
 solve({
-	day,
-	year,
+	day: Number(day),
+	year: Number(year),
 	...solution
 });
