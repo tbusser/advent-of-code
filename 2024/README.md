@@ -13,6 +13,7 @@ A list of the challenges for 2024. I've rated each challenge on how difficult I 
 | [Day 7: Bridge Repair](./07/)        | Medium  | Easy    |
 | [Day 8: Resonant Collinearity](./08) | Easy    | Easy    |
 | [Day 9: Disk Fragmenter](./09/)      | Easy    | Easy    |
+| [Day 10: Hoof It](./10/)             | Easy    | Easy    |
 
 ## Legend
 
