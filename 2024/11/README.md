@@ -8,6 +8,8 @@ It felt like a recursive solution might be a better fit, so I got to work. I bui
 
 After some thinking I was unsure how to proceed. I am convinced the recursive solution is sound but it was too long. On a whim I decided to add a cache. The cache uses the value of a stone and the number of times the observer blinked to store how many stones it will have after blinking for 75 times. Much to my surprise this gave me the correct solution in mere milliseconds.
 
+Since part 2 was getting solved so quickly I figured I'd also use it for part 1. My [original part 1 solution](./part-1.ts) is still in the repo and an updated version reusing the logic from part 2 can be found [here](./part-1-alt.ts). The original answer for part 1 finds the answer in about 47ms, whereas the updated version only takes 1ms to find the same solution!
+
 Rating: **Easy**
 
 ## Challenge description
