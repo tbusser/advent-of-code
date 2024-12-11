@@ -4,17 +4,17 @@ These are my solutions for the puzzles of [Advent of Code](https://adventofcode.
 
 ## Setup
 
-The solutions require NodeJS version 22.1.0 to run. In addition you need a couple of packages, these can be installed by running the `npm install` command from the root folder of the project.
+The solutions require NodeJS version 22.1.0 to run. In addition you need a couple of packages, these can be installed by running the `pnpm install` command from the root folder of the project.
 
 ## Running the solutions
 
 To run a specific solution you can use the following command:
 ```bash
-npm run solve <year>/<day>/<part>
+pnpm solve <year>/<day>/<part>
 ```
 For instance to run the solution for day 2, part 1 you need the command:
 ```bash
-npm run solve 2015/2/1
+pnpm solve 2015/2/1
 ```
 
 ## Puzzle input
