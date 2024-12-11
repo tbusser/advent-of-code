@@ -9,16 +9,16 @@ type Config = {
 	solver: (input: string) => Promise<number | string>;
 };
 
+type Stats = {
+	mean: number;
+	median: number;
+	sortedMeasurements: number[];
+	trimmedMean: number;
+};
+
 /* ========================================================================== */
 
-const numberFormatter = new Intl.NumberFormat('en', {
-	maximumFractionDigits: 5,
-	minimumFractionDigits: 5
-});
-
-/* ========================================================================== */
-
-function calculateAverage(measurements: number[]): number {
+function calculateMean(measurements: number[]): number {
 	return measurements.reduce((total, measurement) => total + measurement, 0) / measurements.length;
 }
 
@@ -30,30 +30,40 @@ function calculateMedian(measurements: number[]): number {
 	}
 }
 
-function formatDuration(duration: number): string {
-	return `${numberFormatter.format(duration)}ms`;
+function calculateTrimmedMean(measurements: number[]): number {
+	// Calculate how many items 10% is.
+	const itemsToRemove = measurements.length / 10;
+	// Remove the slowest and fastest execution times
+	const trimmedMeasurements = measurements.slice(itemsToRemove, measurements.length - itemsToRemove);
+
+	return calculateMean(trimmedMeasurements);
+}
+
+function calculateStats(measurements: number[]): Stats {
+	const sortedMeasurements = measurements.toSorted((a, b) => a - b);
+
+	return {
+		mean: calculateMean(sortedMeasurements),
+		median: calculateMedian(sortedMeasurements),
+		sortedMeasurements,
+		trimmedMean: calculateTrimmedMean(sortedMeasurements)
+	};
 }
 
 /* ========================================================================== */
 
-export async function measure(config: Config, sampleSize: number = 20) {
+export async function measure(config: Config, sampleSize: number = 50) {
 	const measurements: number[] = [];
 	const input = await fetchInputForDay(config.year, config.day);
 
 	for (let index = 0; index < sampleSize; index++) {
-		process.stdout.write('.');
+		process.stdout.clearLine(0);
+		process.stdout.cursorTo(0);
+		process.stdout.write(`Measuring sample ${index + 1} of ${sampleSize}`);
 		measurements.push((await measureExecution(() => config.solver(input))).duration);
 	}
 
 	process.stdout.write('\n');
 
-	measurements.sort((a, b) => a - b);
-	console.log(`Fastest time: ${formatDuration(measurements.at(0))}`);
-	console.log(`Slowest time: ${formatDuration(measurements.at(-1))}`);
-
-	console.log(`Mean time to find the solution: ${formatDuration(calculateAverage(measurements))}`);
-	// Remove the slowest and fastest execution times
-	const trimmedMeasurements = measurements.slice(1, 19);
-	console.log(`10% Trimmed mean time to find the solution: ${formatDuration(calculateAverage(trimmedMeasurements))}`);
-	console.log(`Median time to find the solution: ${formatDuration(calculateMedian(measurements))}`);
+	return calculateStats(measurements);
 }
