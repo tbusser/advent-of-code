@@ -16,7 +16,7 @@ function count(source: unknown): number {
 
 /* -------------------------------------------------------------------------- */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const source = JSON.parse(input);
 
 	return count(source);

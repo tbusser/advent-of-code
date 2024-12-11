@@ -2,7 +2,7 @@ import { findFactors } from './helpers/find-factors.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	// Each elf gives 10 times the number of presents as his/her number. If we
 	// divide the input by 10 each elf gives 1 time the number of presents as
 	// his/her number and we a lower target to find a solution to.

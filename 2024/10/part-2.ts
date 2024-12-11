@@ -2,7 +2,7 @@ import { TopographicMap } from './helpers/topographic-map.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const topographicMap = TopographicMap.createInstance(input);
 	const trailsFromStart: Record<number, number> = {};
 

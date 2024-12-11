@@ -26,7 +26,7 @@ function parseInput(input: string) {
 
 /* -------------------------------------------------------------------------- */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	return parseInput(input);
 }
 

@@ -3,7 +3,7 @@ import { Profile, profile } from './helpers/profile.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const aunts = parseInput(input);
 
 	for (const [index, aunt] of aunts.entries()) {

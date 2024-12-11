@@ -3,7 +3,7 @@ import { parseInputAsColumns } from './helpers/parse-input.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const columns = parseInputAsColumns(input);
 	let triangleCount: number = 0;
 

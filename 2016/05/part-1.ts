@@ -6,7 +6,7 @@ const doorId = 'ffykfhsq';
 
 /* ========================================================================== */
 
-async function solver(): Promise<string> {
+function solver(): string {
 	const password: string[] = [];
 
 	for (const hash of generateHash(doorId)) {

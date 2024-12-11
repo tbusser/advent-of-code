@@ -2,7 +2,7 @@ import { LightGrid, onValue } from './helpers/light-grid.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const grid = LightGrid.createLightGrid(input);
 	const endPosition = grid.columnCount - 1;
 

@@ -25,7 +25,7 @@ function findCodeAtCoordinate(coordinate: Coordinate): number {
 
 /* -------------------------------------------------------------------------- */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const targetCell = parseInput(input);
 
 	return findCodeAtCoordinate(targetCell);

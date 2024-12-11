@@ -2,8 +2,8 @@ import { parseInput } from './helpers/parse-input.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
-	const parsedInput = parseInput(input);
+function solver(input: string): number {
+	const data = parseInput(input);
 
 	return -1;
 }

@@ -3,7 +3,7 @@ import { parseInput } from './helpers/parse-input.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const route = parseInput(input);
 	const path = followRoute(route);
 	const endPoint = path.at(-1);

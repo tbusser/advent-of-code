@@ -7,7 +7,7 @@ const numberOfIterations = 2503;
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const reindeer = parseInput(input);
 	// Initialize the object with the name of all the deer and setting their
 	// score to 0.

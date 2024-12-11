@@ -2,7 +2,7 @@ import { Grid } from './helpers/xmas-grid.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const grid = Grid.createInstance(input);
 
 	return grid.countCrossMas();

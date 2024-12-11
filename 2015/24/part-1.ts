@@ -4,7 +4,7 @@ import { parseInput } from './helpers/parse-input.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	// Get all the packages and reverse them so they're in descending order.
 	const packages = parseInput(input);
 	const targetWeightForGroup = calculateTargetWeight(packages, 3);

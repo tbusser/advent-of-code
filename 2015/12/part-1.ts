@@ -1,4 +1,4 @@
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	// Replace every character which isn't a "-" or a digit with a space
 	const numbersWithWhitespace = input.replace(/[^\d-]/g, ' ');
 	// Split the string on one or more spaces, this will result in an array with

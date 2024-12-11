@@ -25,7 +25,7 @@ function isWordNice(word: string): boolean {
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const words = input.split('\n');
 	let numberOfNiceWords = 0;
 

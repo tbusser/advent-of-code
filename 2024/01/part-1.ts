@@ -2,7 +2,7 @@ import { parseInput } from './helpers/parse-input.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const [left, right] = parseInput(input);
 
 	return left.reduce<number>(

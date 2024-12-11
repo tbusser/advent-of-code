@@ -2,7 +2,7 @@ import { countStonesAfterBlinking } from './helpers/count-stones.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const stones = input.split(' ').map(Number);
 
 	return countStonesAfterBlinking(stones, 25);

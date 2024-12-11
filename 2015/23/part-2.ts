@@ -3,7 +3,7 @@ import { Simulator } from './helpers/simulator.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const program = parseInput(input);
 	const simulator = new Simulator(1);
 

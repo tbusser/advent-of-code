@@ -2,7 +2,7 @@ import { readOutNumberOfTimes } from './helpers/read-out.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const result = readOutNumberOfTimes(input, 50);
 
 	return result.length;

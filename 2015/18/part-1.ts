@@ -2,7 +2,7 @@ import { LightGrid } from './helpers/light-grid.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const grid = LightGrid.createLightGrid(input);
 
 	for (let index = 0; index < 100; index++) {

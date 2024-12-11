@@ -20,7 +20,7 @@ function isReportOrModificationsSafe(report: Report): boolean {
 
 /* -------------------------------------------------------------------------- */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const reports = parseInput(input);
 
 	return reports.filter(isReportOrModificationsSafe).length;

@@ -6,7 +6,7 @@ import { measure as measureExecution } from './performance.js';
 type Config = {
 	year: number;
 	day: number;
-	solver: (input: string) => Promise<number | string>;
+	solver: (input: string) => number | string;
 };
 
 type Stats = {
@@ -60,7 +60,7 @@ export async function measure(config: Config, sampleSize: number = 50) {
 		process.stdout.clearLine(0);
 		process.stdout.cursorTo(0);
 		process.stdout.write(`Measuring sample ${index + 1} of ${sampleSize}`);
-		measurements.push((await measureExecution(() => config.solver(input))).duration);
+		measurements.push((measureExecution(() => config.solver(input))).duration);
 	}
 
 	process.stdout.write('\n');

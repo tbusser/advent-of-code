@@ -2,7 +2,7 @@ import { countHouses } from './helpers/count-houses.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	return countHouses(input, 1);
 }
 

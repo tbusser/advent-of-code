@@ -21,7 +21,7 @@ function blink(stones: number[]) {
 
 /* -------------------------------------------------------------------------- */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	let line = input.split(' ').map(Number);
 
 	for (let index = 0; index < 25; index++) {

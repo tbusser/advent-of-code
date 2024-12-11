@@ -2,7 +2,7 @@ import { findNumber } from './helpers/find-number.js';
 
 /* ========================================================================== */
 
-export async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	return findNumber(input, 6);
 }
 

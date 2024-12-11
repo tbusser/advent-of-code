@@ -44,7 +44,7 @@ function createBlockPicker(input: string) {
 	};
 }
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const disk: number[] = [];
 	const { getCacheContent, pickBlocks } = createBlockPicker(input);
 	let index = 0;

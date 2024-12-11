@@ -79,7 +79,7 @@ function createLineSegments(path: Coordinate[]): Segment[] {
 
 /* -------------------------------------------------------------------------- */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const route = parseInput(input);
 	const path = followRoute(route);
 	const segments = createLineSegments(path);

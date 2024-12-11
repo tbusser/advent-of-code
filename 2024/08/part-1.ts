@@ -25,7 +25,7 @@ function findAntinodes(antennas: Coordinate[], size: number, locations: Set<stri
 	}
 }
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const city = parseInput(input);
 	const uniqueAntinodeLocations: Set<string> = new Set<string>();
 

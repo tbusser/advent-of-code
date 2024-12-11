@@ -7,7 +7,7 @@ const self = 'self';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const graph = parseInput(input);
 
 	function insertSelf(person: string) {

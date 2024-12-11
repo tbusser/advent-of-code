@@ -7,7 +7,7 @@ const lightsPerRow = 1000;
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const grid = new BrightnessGrid(lightsPerRow);
 
 	const instructions = parseInput(input);

@@ -6,10 +6,10 @@ import { solver } from './part-2.js';
 
 describe('2015/01/2', () => {
 	it('should return 1 for the input ")"', async () => {
-		expect(await solver(')')).toBe(1);
+		expect(solver(')')).toBe(1);
 	});
 
 	it('should return 5 for the input "()())"', async () => {
-		expect(await solver('()())')).toBe(5);
+		expect(solver('()())')).toBe(5);
 	});
 });

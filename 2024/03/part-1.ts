@@ -2,7 +2,7 @@ import { parseInput } from './helpers/parse-input.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const numberPairs = parseInput(input);
 
 	return numberPairs.reduce((total, [a, b]) => total + (a * b), 0);

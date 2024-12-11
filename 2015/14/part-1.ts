@@ -12,7 +12,7 @@ function calculateDistance(reindeer: Reindeer, duration: number): number {
 
 /* -------------------------------------------------------------------------- */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const reindeer = parseInput(input);
 
 	const longestDistance = reindeer.reduce(

@@ -4,7 +4,7 @@ const puzzleInput: string = 'hepxxyzz';
 
 /* ========================================================================== */
 
-export async function solver(): Promise<string> {
+function solver(): string {
 	const nextValidPassword = findNextPassword(puzzleInput);
 
 	return nextValidPassword;

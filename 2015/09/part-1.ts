@@ -3,7 +3,7 @@ import { parseInput } from './helpers/parse-input.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const graph = parseInput(input);
 
 	return findOptimalPath(graph, Math.min);

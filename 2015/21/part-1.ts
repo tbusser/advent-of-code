@@ -11,7 +11,7 @@ const hitPoints = 100;
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const boss = parseInput(input);
 	let lowestEquipmentCost = Infinity;
 

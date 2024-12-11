@@ -1,4 +1,4 @@
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const parsedInput: number[] = input.split('').map(Number);
 	const disk: Record<number, number> = {};
 	const freeSpace: Record<number, number> = {};

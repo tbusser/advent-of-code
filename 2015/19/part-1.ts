@@ -17,7 +17,7 @@ function countNumberOfMutations(machineInput: MachineInput): number {
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const machineInput = parseInput(input);
 
 	return countNumberOfMutations(machineInput);

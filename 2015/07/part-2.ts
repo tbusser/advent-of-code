@@ -13,7 +13,7 @@ function patchAssignmentValue(instructions: Instruction[], wire: string, value: 
 
 /* -------------------------------------------------------------------------- */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const instructions = parseInput(input);
 	const circuit = new Circuit();
 

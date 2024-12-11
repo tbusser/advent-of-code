@@ -5,7 +5,7 @@ import { keyFive } from './helpers/keypad-two.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<string> {
+function solver(input: string): string {
 	const instructionsPerDigit = parseInput(input);
 
 	return findCode(instructionsPerDigit, keyFive);

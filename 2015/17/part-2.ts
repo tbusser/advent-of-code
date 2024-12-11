@@ -7,7 +7,7 @@ const totalVolume = 150;
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const containers = parseInput(input);
 	const result = {
 		containerCount: Infinity,

@@ -33,7 +33,7 @@ function processUpdate(update: number[]) {
 	}
 }
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	input.split('\n').forEach(line => {
 		if (line.includes('|')) {
 			addRule(line.split('|').map(Number));

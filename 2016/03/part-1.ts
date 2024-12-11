@@ -4,7 +4,7 @@ import { parseInput } from './helpers/parse-input.js';
 /* ========================================================================== */
 
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const groups = parseInput(input);
 
 	return groups.filter(isTriangle).length;

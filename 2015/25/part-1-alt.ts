@@ -18,7 +18,7 @@ const divisor = 33554393;
  *
  * @see {@link https://www.reddit.com/r/adventofcode/comments/3y5jco/comment/cyaqp5t}
  */
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const { column, row } = parseInput(input);
 
 	const exponent = (row + column - 2) * (row + column - 1) / 2 + column - 1;

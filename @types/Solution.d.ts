@@ -11,5 +11,5 @@ declare type Solution<T = number> = {
 	 *
 	 * @param input The puzzle input from the input.txt file.
 	 */
-	solver: (input: string) => Promise<T>;
+	solver: (input: string) => T;
 };

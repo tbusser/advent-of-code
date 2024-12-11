@@ -18,7 +18,7 @@ import { parseInput } from './helpers/parse-input.js';
  *
  * @see {@link https://www.reddit.com/r/adventofcode/comments/3xflz8/comment/cy4h7ji/}
  */
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const { medicineMolecule } = parseInput(input);
 
 	// A symbol starts with a capital letter.

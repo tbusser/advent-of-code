@@ -33,7 +33,7 @@ function reorderPages(update: Update, rules: Rule[]) {
 
 /* -------------------------------------------------------------------------- */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const { rules, updates } = parseInput(input);
 	const invalidUpdates = updates.filter(update => !isValid(update, rules));
 

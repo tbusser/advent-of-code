@@ -2,7 +2,7 @@ const symbolUp = '(';
 
 /* ========================================================================== */
 
-export async function solver(input: string): Promise<number> {
+export function solver(input: string): number {
 	let currentFloor = 0;
 
 	for (let step = 0; step < input.length; step++) {

@@ -2,7 +2,7 @@ import { findFactors } from './helpers/find-factors.js';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const presentsGoal = Number(input);
 
 	// Iterate over the houses, start with 1 house and keep increasing till the

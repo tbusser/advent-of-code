@@ -13,7 +13,7 @@ const storageRoomName = 'northpole object storage';
 
 /* ========================================================================== */
 
-async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const rooms = parseInput(input);
 
 	const realRooms = rooms.filter(room => room.checksum === generateChecksum(room.encryptedName));

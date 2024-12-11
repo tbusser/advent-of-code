@@ -2,7 +2,7 @@ import { parseInput } from './helpers/parse-input.js';
 
 /* ========================================================================== */
 
-export async function solver(input: string): Promise<number> {
+function solver(input: string): number {
 	const gifts = parseInput(input);
 
 	const feetOfRibbon = gifts.reduce((total, { height, length, width }) => {
