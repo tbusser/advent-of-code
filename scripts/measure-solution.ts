@@ -17,7 +17,7 @@
  |
  |*/
 
-import { measure } from './utils/measure.js';
+import { collectPerformanceData } from './utils/collect-performance-data.js';
 import { resolveChallengeParam } from './utils/resolve-challenge-param.js';
 
 /* ========================================================================== */
@@ -38,13 +38,10 @@ function formatDuration(duration: number): string {
 
 /* ========================================================================== */
 
-// Import the script for the provided puzzle ID.
-const { default: solution } = await import(path) as { default: Solution };
-
-const stats = await measure({
+const stats = await collectPerformanceData({
 	day,
+	path,
 	year,
-	solver: solution.solver
 }, sampleSize);
 
 console.log(`Fastest time: ${formatDuration(stats.sortedMeasurements.at(0))}`);
