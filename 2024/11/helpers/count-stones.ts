@@ -1,4 +1,4 @@
-type StoneCache = Map<string, number>;
+const cache = new Map<string, number>();
 
 /* ========================================================================== */
 
@@ -14,7 +14,7 @@ function blink(stone: number): number[] {
 	];
 }
 
-function processStones(stones: number[], index: number, numberOfBlinks: number, cache: StoneCache): number {
+function processStones(stones: number[], index: number, numberOfBlinks: number): number {
 	let count = 0;
 
 	if (index === numberOfBlinks) return stones.length;
@@ -26,7 +26,7 @@ function processStones(stones: number[], index: number, numberOfBlinks: number, 
 		}
 
 		const newStones = blink(stone);
-		const numberOfStones = processStones(newStones, index + 1, numberOfBlinks, cache);
+		const numberOfStones = processStones(newStones, index + 1, numberOfBlinks);
 		cache.set(`${stone}|${index}`, numberOfStones);
 		count += numberOfStones;
 	}
@@ -39,10 +39,9 @@ function processStones(stones: number[], index: number, numberOfBlinks: number, 
 
 export function countStonesAfterBlinking(stones: number[], numberOfBlinks: number): number {
 	let count: number = 0;
-	const cache: StoneCache = new Map();
 
 	for (let stone = 0; stone < stones.length; stone++) {
-		count += processStones([stones[stone]], 0, numberOfBlinks, cache);
+		count += processStones([stones[stone]], 0, numberOfBlinks);
 	}
 
 	return count;
