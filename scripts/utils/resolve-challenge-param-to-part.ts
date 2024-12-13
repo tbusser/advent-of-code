@@ -24,7 +24,7 @@ function validatePath(puzzlePath: string, errorMessage: string) {
 
 /* -------------------------------------------------------------------------- */
 
-export function resolveChallengeParam(input: string): Result {
+export function resolveChallengeParamToPart(input: string): Result {
 	if (!validationRegex.test(input)) {
 		console.log('Unable to find challenge. The challenge ID must start with "<year>/<day>/".');
 		console.log('- <year> must be 4 digits long.');

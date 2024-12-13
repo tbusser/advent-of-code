@@ -1,5 +1,6 @@
 import { cpSync, existsSync, mkdirSync, rmdirSync } from 'fs';
 import path from 'path';
+import { resolveChallengeParamToPath } from './utils/resolve-challenge-param-to-path.js';
 
 /* ========================================================================== */
 
@@ -30,29 +31,6 @@ function ensureDestinationIsEmpty(destination: string) {
 	}
 }
 
-function getPuzzleId(): string {
-	const puzzleIdRegex = /\d{4}\/\d{1,2}/;
-
-	// The second argument is the puzzle ID, this should be in the
-	// format <year>/<day>/<part>. Make sure an argument is provided before
-	// trying to validate the argument.
-	const puzzleId = process.argv[2];
-
-	if (!puzzleIdRegex.test(puzzleId)) {
-		console.log('Please provide the puzzle ID as <year>/<day>.');
-		process.exit(1);
-	}
-
-	return puzzleId;
-}
-
-function getPuzzlePath(puzzleId: string): string {
-	const [year, day] = puzzleId.split('/');
-	const paddedDay = day.padStart(2, '0');
-
-	return path.relative(process.cwd(), `${year}/${paddedDay}`);
-}
-
 function removeFolder(folderPath: string) {
 	try {
 		rmdirSync(folderPath);
@@ -63,11 +41,10 @@ function removeFolder(folderPath: string) {
 
 /* ========================================================================== */
 
-const puzzleId = getPuzzleId();
-const puzzlePath = getPuzzlePath(puzzleId);
+const { id, path: puzzlePath } = resolveChallengeParamToPath(false);
 
 ensureDestinationIsEmpty(puzzlePath);
 
 copyScaffoldToDestination(puzzlePath);
 
-console.log(`The puzzle "${puzzleId}" has been scaffolded in "${puzzlePath}".`);
+console.log(`The puzzle "${id}" has been scaffolded in "${puzzlePath}".`);
