@@ -75,15 +75,15 @@ export class Garden extends BaseGrid {
 			area++;
 			visitedPlots.add(index);
 
-			const neighbors = this.neighbors(index, ['up', 'right', 'down', 'left']);
-			const plantNeighbors = neighbors.filter(neighbor => neighbor.value === plantType);
+			const neighbors = this.neighbors(index, ['up', 'right', 'down', 'left'])
+				.filter(neighbor => neighbor.value === plantType);
 
-			perimeter += 4 - plantNeighbors.length;
+			perimeter += 4 - neighbors.length;
 
 			// Lets assume the cell doesn't have any neighboring cells.
 			const inOutMap = [false, false, false, false];
 
-			for (const neighbor of plantNeighbors) {
+			for (const neighbor of neighbors) {
 				// Set the flag that the cell has a neighbor for the direction.
 				inOutMap[directionToIndex(neighbor.direction)] = true;
 				if (visitedPlots.has(neighbor.index)) continue;
