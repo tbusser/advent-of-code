@@ -39,19 +39,29 @@ export class Garden extends BaseGrid {
 
 		let count: number = 0;
 
+		// Iterate over the edge plots in order, this means we will be going
+		// from top left to right down.
 		for (const plotId of plotIds) {
+			// Check for an edge on the left hand side. If the plot above is
+			// an edge we don't count an edge for this plot as it is part of the
+			// same edge.
 			if (!plots[plotId][Edge.left] && (plots[plotId - this.columns]?.[Edge.left] ?? true)) {
 				count++;
 			}
 
+			// Check for an edge on the right hand side.
 			if (!plots[plotId][Edge.right] && (plots[plotId - this.columns]?.[Edge.right] ?? true)) {
 				count++;
 			}
 
+			// Check for an edge on the top side. If the plot to the left is an
+			// edge we don't count an edge for this plot as it is part of the
+			// same edge.
 			if (!plots[plotId][Edge.up] && (plots[plotId - 1]?.[Edge.up] ?? true)) {
 				count++;
 			}
 
+			// Check for an edge at the bottom side.
 			if (!plots[plotId][Edge.down] && (plots[plotId - 1]?.[Edge.down] ?? true)) {
 				count++;
 			}
