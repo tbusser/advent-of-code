@@ -15,6 +15,7 @@ A list of the challenges for 2024. I've rated each challenge on how difficult I 
 | [Day 9: Disk Fragmenter](./09/)      | Easy    | Easy    |
 | [Day 10: Hoof It](./10/)             | Easy    | Easy    |
 | [Day 11: Plutonian Pebbles](./11/)   | Easy    | Easy    |
+| [Day 12: Garden Groups](./12/)       | Easy    | Hard    |
 
 ## Legend
 
