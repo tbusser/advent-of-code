@@ -4,6 +4,7 @@
   "description": "Solutions the the Advent of Code puzzles",
   "type": "module",
   "scripts": {
+    "readme": "tsx ./scripts/fill-readme.ts",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "measure": "tsx ./scripts/measure-solution.ts",

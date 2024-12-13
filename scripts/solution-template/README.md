@@ -1,4 +1,4 @@
-# Title
+# {Title}
 
 Rating: **<rating>**
 
@@ -6,4 +6,8 @@ Rating: **<rating>**
 
 ### Part One
 
+{PartOne}
+
 ### Part Two
+
+{PartTwo}
