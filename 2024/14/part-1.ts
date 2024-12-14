@@ -28,7 +28,6 @@ function solver(input: string): number {
 	for (const robot of robots) {
 		moveRobot(robot, numberOfMoves);
 
-
 		if (robot.x === halfWidth || robot.y === halfHeight) {
 			continue;
 		}

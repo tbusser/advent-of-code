@@ -6,7 +6,19 @@ Determining the quadrants was also not too hard. First of all any robot position
 
 Once all the robots are processed I have four number which I can multiply and this gives the proper answer.
 
-Rating: **Easy**
+I couldn't figure out part 2. The challenge description was too vague. I made an assumption there would be a shape like this from the center of the top row
+
+```
+  #
+ ###
+#####
+```
+
+Unfortunately this never appeared. At this point I looked at hints from my colleagues and read the assumption that none of the robots would overlap to make the pattern. It also included a print of the shape. Now I felt bad for looking at the hints. I wish I had thought of looking for the shape I was searching for at any place in the grid. Had I done this, I would've found the answer without any help. I adapted my code to look for the pattern anywhere in the grid, this gave me a few false positives. Once I coupled my detection with the rule the shape had to be seen more than once did I find the correct answer for my input.
+
+Because I saw a picture of the shape and where it could be located in the grid, I have to rate part 2 as hard.
+
+Rating: **Easy** / **Hard**
 
 ## Challenge description
 
