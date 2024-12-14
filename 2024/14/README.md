@@ -4,9 +4,9 @@ Part 1 was again not so hard. Multiply the X and Y deltas for the robot with the
 
 Determining the quadrants was also not too hard. First of all any robot positioned in the horizontal or vertical middle can be discarded. The remaining robots now have to be sorted. To start I created an array with four position: [top left, top right, bottom left, bottom right]. For each robot I started in the top left quadrant (index 0). If the x coordinate is past the middle, I add 1 to the quadrant putting the robot in the top right (index 1). Now a check for the y position, if it is below the middle I add 2 to the quadrant. This means top left (index 0) become bottom left (index 2) and top right (index 1) becomes bottom right (index 3).
 
-Once all the robots are processed I have four number which I can multiply and this gives the proper answer.
+Once all the robots are processed I have four numbers which I can multiply and this gives the proper answer.
 
-I couldn't figure out part 2. The challenge description was too vague. I made an assumption there would be a shape like this from the center of the top row
+I couldn't figure out part 2 with help. The challenge description was too vague. I made an assumption there would be a shape like this from the center of the top row
 
 ```
   #
