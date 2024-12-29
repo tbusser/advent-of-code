@@ -1,4 +1,5 @@
 export type Coordinate = { x: number; y: number };
+export type Position = number | Coordinate;
 
 export type Direction = 'up' | 'up-left' | 'up-right' | 'left' | 'down' | 'down-left' | 'down-right' | 'right';
 
@@ -52,7 +53,7 @@ export class Grid<T = string> {
 	/**
 	 * Takes a number or a coordinate and always returns a coordinate.
 	 */
-	protected positionToCoordinate(position: number | Coordinate): Coordinate {
+	protected positionToCoordinate(position: Position): Coordinate {
 		return typeof position === 'number'
 			? this.indexToCoordinate(position)
 			: position;
@@ -61,7 +62,7 @@ export class Grid<T = string> {
 	/**
 	 * Takes a number or a coordinate and always returns an index.
 	 */
-	protected positionToIndex(position: number | Coordinate): number {
+	protected positionToIndex(position: Position): number {
 		return typeof position === 'number'
 			? position
 			: this.coordinateToIndex(position);
@@ -90,7 +91,12 @@ export class Grid<T = string> {
 		};
 	}
 
-	public logGrid() {
+	public logGrid(compact: boolean = true) {
+		if (compact) {
+			console.log(this.getRows().reduce((grid, row) => grid + row.join('') + '\n', ''));
+
+			return;
+		}
 		const rows = this.getRows();
 		console.table(rows);
 	}
@@ -108,7 +114,7 @@ export class Grid<T = string> {
 	 *          direction doesn't have a neighbor, the direction will be omitted
 	 *          from the result.
 	 */
-	public neighbors(position: number | Coordinate, directions?: Direction[]): Neighbor<T>[] {
+	public neighbors(position: Position, directions?: Direction[]): Neighbor<T>[] {
 		const center: Coordinate = this.positionToCoordinate(position);
 		// This is the array we will be returning with the neighbors.
 		const neighbors: Neighbor<T>[] = [];
