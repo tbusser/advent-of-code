@@ -18,6 +18,7 @@ A list of the challenges for 2024. I've rated each challenge on how difficult I 
 | [Day 12: Garden Groups](./12/)          | Easy    | Hard    |
 | [Day 13: Claw Contraption](./13/)       | Easy    |         |
 | [Day 14: Restroom Redoubt](./14/)       | Easy    | Hard    |
+| [Day 16: Reindeer Maze](./16)           | Hard    | Medium  |
 | [Day 17: Chronospatial Computer](./17)  | Easy    |         |
 | [Day 18: RAM Run](./18)                 | Medium  | Easy    |
 

@@ -6,6 +6,7 @@ import { MinHeap } from '@helpers/min-heap.js';
 type HeapItem = {
 	direction: Direction;
 	index: number;
+	path?: number[];
 	score: number;
 	turns: number;
 };
@@ -57,10 +58,11 @@ export class ReindeerMaze extends Grid {
 
 	private createQueueItem(entry: HeapItem, neighbor: Neighbor): HeapItem {
 		return {
-			turns: entry.turns + ((entry.direction === neighbor.direction) ? 0 : 1),
 			direction: neighbor.direction,
 			index: neighbor.index,
-			score: entry.score + ((entry.direction === neighbor.direction) ? 1 : 1001)
+			path: entry.path ? [...entry.path, neighbor.index] : undefined,
+			score: entry.score + ((entry.direction === neighbor.direction) ? 1 : 1001),
+			turns: entry.turns + ((entry.direction === neighbor.direction) ? 0 : 1),
 		};
 	}
 
@@ -132,5 +134,63 @@ export class ReindeerMaze extends Grid {
 		}
 
 		return Infinity;
+	}
+
+	public findNumberOfTiles(): number {
+		let lowestScore = Infinity;
+		const pathTiles = new Set<number>([this.startIndex, this.endIndex]);
+		const visitedNodes = new Map<string, number>();
+
+		// Prioritize nodes which have the least number of turns in their path.
+		const queue = new MinHeap<HeapItem>(item => item.turns);
+		queue.push({
+			direction: 'right',
+			turns: 0,
+			index: this.startIndex,
+			path: [],
+			score: 1
+		});
+
+		while (queue.size > 0) {
+			// Get the item at the head of the queue.
+			const entry = queue.pop();
+
+			// When the score for the the entry exceeds the lowest found score,
+			// there is no point in continuing with the branch.
+			if (entry.score > lowestScore) continue;
+
+			// If this node has already been visited but with a lower score it
+			// means the path for this entry is not going to give a better score
+			// and doesn't have to be further explored.
+			if (
+				visitedNodes.get(entry.index + entry.direction) &&
+				visitedNodes.get(entry.index + entry.direction) < entry.score
+			) {
+				continue;
+			}
+			visitedNodes.set(entry.index + entry.direction, entry.score);
+
+			// Get the viable neighbors for the node. Walls are never a viable
+			// neighbor. Nodes in the visited path can be ignored when all paths
+			// should be found.
+			const neighbors = this.neighbors(entry.index, neighborMap[entry.direction])
+				.filter(neighbor => neighbor.value !== symbol.wall);
+
+			for (const neighbor of neighbors) {
+				// Check if the end point has been reached.
+				if (neighbor.index === this.endIndex) {
+					// The first path found has the lowest score, we keep this
+					// value so we can prune branches which go over this score.
+					lowestScore = entry.score;
+					entry.path.forEach(index => pathTiles.add(index));
+
+					continue;
+				}
+
+				queue.push(this.createQueueItem(entry, neighbor));
+			}
+		}
+
+		return pathTiles.size;
 	}
 }

@@ -112,35 +112,42 @@ describe('reindeer maze', () => {
 	it('should correctly calculate the score for example 1', () => {
 		const maze = ReindeerMaze.createInstance(example1);
 		expect(maze.findLowestScore()).toBe(7036);
+		expect(maze.findNumberOfTiles()).toBe(45);
 	});
 
 	it('should correctly calculate the score for example 2', () => {
 		const maze = ReindeerMaze.createInstance(example2);
 		expect(maze.findLowestScore()).toBe(11048);
+		expect(maze.findNumberOfTiles()).toBe(64);
 	});
 
 	it('should correctly calculate the score for example 3', () => {
 		const maze = ReindeerMaze.createInstance(example3);
 		expect(maze.findLowestScore()).toBe(21148);
+		expect(maze.findNumberOfTiles()).toBe(149);
 	});
 
 	it('should correctly calculate the score for example 4', () => {
 		const maze = ReindeerMaze.createInstance(example4);
 		expect(maze.findLowestScore()).toBe(5078);
+		// expect(maze.findNumberOfTiles()).toBe(413);
 	});
 
 	it('should correctly calculate the score for example 5', () => {
 		const maze = ReindeerMaze.createInstance(example5);
 		expect(maze.findLowestScore()).toBe(21110);
+		// expect(maze.findNumberOfTiles()).toBe(264);
 	});
 
 	it('should correctly calculate the score for example 6', () => {
 		const maze = ReindeerMaze.createInstance(example6);
 		expect(maze.findLowestScore()).toBe(41210);
+		// expect(maze.findNumberOfTiles()).toBe(514);
 	});
 
 	it('should correctly calculate the score for example 7', () => {
 		const maze = ReindeerMaze.createInstance(example7);
 		expect(maze.findLowestScore()).toBe(4013);
+		expect(maze.findNumberOfTiles()).toBe(14);
 	});
 });
