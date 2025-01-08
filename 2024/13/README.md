@@ -2,7 +2,23 @@
 
 For part 1 I quickly had an idea how to find a solution. Start at press 100 and work my way down to 1. For each iteration check the position after pressing button A, figured out the distance left to cover and see if I can cover the horizontal and vertical distance by pressing B a number of times. Using the test input I quickly got the right answer and the solution worked on the actual input without a hitch.
 
-Rating: **Easy** / **rating**
+Part 2 had me stumped. The numbers got so large that brute forcing is no longer an option. I've left part 2 alone for a long time before coming back to. I had the idea that there must be a mathematical approach to it. Rereading the challenge description caused me to notice the equations is basically given to you in the description (emphasis is mine).
+
+> This would line up the claw along the X axis (because _80 * 94 + 40 * 22 = 8400_) and along the Y axis (because _80 * 34 + 40 * 67 = 5400_)
+
+Writing it down as an equation gives the following:
+```
+(a * 94) + (b * 22) = 8400
+(a * 34) + (b * 67) = 5400
+```
+
+Not having had to solve equations with two unknowns for a long time left me a bit stranded so I had to [look it up](https://www.cliffsnotes.com/study-guides/algebra/algebra-i/equations-with-two-variables/solving-systems-of-equations-simultaneous-equations). It seemed a bit obvious when I read it but I don't think I would've come up with it myself.
+
+Once I had the theory it was not too difficult putting it into code. See the comment in [calculate-tokens.ts](./helpers/calculate-tokens.ts) for a more detailed explanation of the mathematical solution. The answer to part 2 didn't take long at all to find now. The part 2 solution also works for part 1 but I decided to leave my original brute force solution as it is.
+
+Because I had to do some Googling I will rate part 2 as medium.
+
+Rating: **Easy** / **Medium**
 
 ## Challenge description
 
