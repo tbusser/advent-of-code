@@ -13,7 +13,7 @@ import { Machine } from './parse-input.js';
 // 1) (a * 94) + (b * 22) = 8400
 //    (a * aX) + (b * bX) = pX
 // 2) (a * 34) + (b * 67) = 5400
-//    (a *aY) + (b * bY) = pY
+//    (a * aY) + (b * bY) = pY
 //
 // In order to solve these equations we need to first eliminate one variable,
 // this can be done by making making the b-terms the same in both equations.
