@@ -52,7 +52,7 @@ export function calculateTokensToSpend(machine: Machine): number {
 		/ ((machine.bY * machine.aX) - (machine.bX * machine.aY));
 	const pushesForB = (machine.pX - machine.aX * pushesForA) / machine.bX;
 
-	// When either number if not an integer number, there is no number of tokens
+	// When either number is not an integer number, there is no number of tokens
 	// which can be spend to get to the price.
 	if (!Number.isInteger(pushesForA) || !Number.isInteger(pushesForB)) return 0;
 
