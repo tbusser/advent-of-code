@@ -37,9 +37,9 @@ export type DeviceConfiguration = {
 /* ========================================================================== */
 
 const logicGates = {
-	AND: (left: number, right: number) => left === 1 && right === 1 ? 1 : 0,
-	OR: (left: number, right: number) => left === 1 || right === 1 ? 1 : 0,
-	XOR: (left: number, right: number) => left !== right ? 1 : 0,
+	AND: (left: number, right: number) => left & right,
+	OR: (left: number, right: number) => left | right,
+	XOR: (left: number, right: number) => left ^ right,
 };
 
 /* ========================================================================== */
