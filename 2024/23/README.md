@@ -68,7 +68,7 @@ wh: 2
 td: 1
 ```
 
-The computer you started with will have the highest code, the other computers which are all interconnected will have a count of 1 less. So the largest network of interconnected computers which contains `co` is `co,de,ka,ta`.
+The computer you started with will have the highest count, the other computers which are all interconnected will have a count of 1 less. So the largest network of interconnected computers which contains `co` is `co,de,ka,ta`.
 
 When I applied this logic on the actual input it gave the correct result in one go.
 
