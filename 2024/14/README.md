@@ -14,7 +14,7 @@ I couldn't figure out part 2 with help. The challenge description was too vague.
 #####
 ```
 
-Unfortunately this never appeared. At this point I looked at hints from my colleagues and read the assumption that none of the robots would overlap to make the pattern. It also included a print of the shape. Now I felt bad for looking at the hints. I wish I had thought of looking for the shape I was searching for at any place in the grid. Had I done this, I would've found the answer without any help. I adapted my code to look for the pattern anywhere in the grid, this gave me a few false positives. Once I coupled my detection with the rule the shape had to be seen more than once did I find the correct answer for my input.
+Unfortunately this never appeared. At this point I looked at hints from my colleagues and saw a shape of the pattern to find. Now I felt bad for looking at the hints. I wish I had thought of looking for the shape I was searching for at any place in the grid. Had I done this, I would've found the answer without any help. I adapted my code to look for the pattern anywhere in the grid, this gave me a few false positives. Once I coupled my detection with the rule the shape had to be seen more than once did I find the correct answer for my input.
 
 Because I saw a picture of the shape and where it could be located in the grid, I have to rate part 2 as hard.
 
