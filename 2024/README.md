@@ -18,11 +18,15 @@ A list of the challenges for 2024. I've rated each challenge on how difficult I 
 | [Day 12: Garden Groups](./12/)          | Easy    | Hard    |
 | [Day 13: Claw Contraption](./13/)       | Easy    | Medium  |
 | [Day 14: Restroom Redoubt](./14/)       | Easy    | Hard    |
-| [Day 16: Reindeer Maze](./16)           | Hard    | Medium  |
-| [Day 17: Chronospatial Computer](./17)  | Easy    |         |
-| [Day 18: RAM Run](./18)                 | Medium  | Easy    |
-| [Day 19: Linen Layout](./19)            | Easy    | Easy    |
-| [Day 22: Monkey Market](./22)           | Medium  | Easy    |
+| [Day 15: Warehouse Woes](./15/)         | Easy    | Medium  |
+| [Day 16: Reindeer Maze](./16/)          | Hard    | Medium  |
+| [Day 17: Chronospatial Computer](./17/) | Easy    |         |
+| [Day 18: RAM Run](./18/)                | Medium  | Easy    |
+| [Day 19: Linen Layout](./19/)           | Easy    | Easy    |
+| [Day 21: Keypad Conundrum](./21/)       | Easy    | Medium  |
+| [Day 22: Monkey Market](./22/)          | Medium  | Easy    |
+| [Day 23: LAN Party](./23/)              | Easy    | Easy    |
+| [Day 24: Crossed Wires](./24/)          | Easy    | Medium  |
 
 ## Legend
 
