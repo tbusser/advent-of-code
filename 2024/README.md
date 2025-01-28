@@ -28,6 +28,7 @@ A list of the challenges for 2024. I've rated each challenge on how difficult I 
 | [Day 22: Monkey Market](./22/)          | Medium  | Easy    |
 | [Day 23: LAN Party](./23/)              | Easy    | Easy    |
 | [Day 24: Crossed Wires](./24/)          | Easy    | Medium  |
+| [Day 25: Code Chronicle](./25/)         | Easy    | N/A     |
 
 ## Legend
 
