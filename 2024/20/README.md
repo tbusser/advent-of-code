@@ -1,6 +1,6 @@
 # Day 20: Race Condition
 
-Rating: **<rating>**
+Rating: **Easy**
 
 ## Challenge description
 
@@ -18,11 +18,11 @@ They hand you a **map of the racetrack** (your puzzle input). For example:
 ###############
 #...#...#.....#
 #.#.#.#.#.###.#
-#**S**#...#.#.#...#
+#S#...#.#.#...#
 #######.#.#.###
 #######.#.#...#
 #######.#.###.#
-###..**E**#...#...#
+###..E#...#...#
 ###.#######.###
 #...###...#...#
 #.#####.#.###.#
