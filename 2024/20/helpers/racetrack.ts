@@ -1,4 +1,4 @@
-import { Grid } from '@helpers/grid.js';
+import { Coordinate, Grid } from '@helpers/grid.js';
 
 /* ========================================================================== */
 
@@ -79,19 +79,18 @@ export class Racetrack extends Grid<string | number> {
 	/* ---------------------------------------------------------------------- */
 
 	/**
-	 * Returns an array of track positions which are within the specified max
-	 * distance of the origin and are closer to the end position than the
-	 * provided origin.
+	 * Returns an array of track lengths after having cheated from the provided
+	 * origin point for no more than the provided distance.
 	 *
 	 * @param origin The index of the cell from which to start.
-	 * @param distance The maximum number of moves between the start and the
-	 *        possible destination.
+	 * @param distance The maximum number of moves for which collision detection
+	 *        can be disabled.
 	 */
-	private getDestinationsCells(origin: number, distance: number): { index: number; distance: number }[] {
-		const result = [];
+	private getCheatedDistances(origin: number, distance: number): number[] {
+		const result: number[] = [];
 		// Convert the origin index to a coordinate within the grid.
-		const center = this.indexToCoordinate(origin);
-		const originValue = this.grid[origin];
+		const center: Coordinate = this.indexToCoordinate(origin);
+		const traveled: number = this.grid[origin] as number;
 
 		// Iterate over all the y positions within the distance from the origin
 		// cell. Start above the origin and go one row down for each iteration.
@@ -120,13 +119,20 @@ export class Racetrack extends Grid<string | number> {
 				if (typeof this.grid[origin + (yModifier * this.columnCount) + xModifier] !== 'number') continue;
 				// Make sure the possible destination cell is closer to the end
 				// point than the origin cell.
-				if (originValue < this.grid[origin + (yModifier * this.columnCount) + xModifier]) continue;
+				if (traveled < (this.grid[origin + (yModifier * this.columnCount) + xModifier] as number)) continue;
 
-				// We've found a valid destination cell, add it to the result.
-				result.push({
-					index: origin + (yModifier * this.columnCount) + xModifier,
-					distance: Math.abs(yModifier) + Math.abs(xModifier)
-				});
+				// We've found a valid destination cell, calculate the length of
+				// the race track with the current cheat applied. The length of
+				// the track is determined by adding the following values:
+				// 1) The number of traveled position from the start position.
+				// 2) The number of position left from the end of the cheat to
+				//    the end of the track.
+				// 3) The distance traveled while cheating.
+				result.push(
+					traveled + // [1]
+					(this.grid[origin + (yModifier * this.columnCount) + xModifier] as number) + // [2]
+					Math.abs(yModifier) + Math.abs(xModifier) /// [3]
+				);
 			}
 		}
 
@@ -135,9 +141,9 @@ export class Racetrack extends Grid<string | number> {
 
 	public findCheats(threshold: number, distance: number = 2): number {
 		// Iterate over all the cells of the track, in order from start to end.
-		return this.track.values().reduce<number>((cheats, cellIndex, trackIndex) => {
+		return this.track.values().reduce<number>((cheats, cellIndex) => {
 			// Get all the cells which can be reached from the current cell.
-			this.getDestinationsCells(cellIndex, distance).forEach(candidate => {
+			this.getCheatedDistances(cellIndex, distance).forEach(cheatedDistance => {
 				// The trackIndex is the number of moves we are away from the
 				// start. Add to this the number of moves the destination cell
 				// is away from the end position and we add the distance
@@ -145,14 +151,10 @@ export class Racetrack extends Grid<string | number> {
 				// cheat.
 				// When we subtract this number from the original track length
 				// we get the number of picoseconds saved by this cheat.
-				if (
-					this.trackLength -
-					(trackIndex + (this.grid[candidate.index] as number) + candidate.distance) >= threshold
-				) cheats++;
+				if (this.trackLength - cheatedDistance >= threshold) cheats++;
 			});
 
 			return cheats;
-
 		}, 0);
 	}
 }
