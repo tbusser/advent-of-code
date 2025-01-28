@@ -37,8 +37,8 @@ export class ChronospatialComputer {
 
 	private instructions: Record<OpCode, () => void> = {
 		[OpCode.Adv]: () => this.a = Math.trunc(this.a / Math.pow(2, this.getComboOperandValue())),
-		[OpCode.Bxl]: () => this.b = this.b ^ this.getComboOperandValue(true),
-		[OpCode.Bst]: () => this.b = this.getComboOperandValue() % 8,
+		[OpCode.Bxl]: () => this.b = ((this.b ^ this.getComboOperandValue(true)) >>> 0),
+		[OpCode.Bst]: () => this.b = (this.getComboOperandValue() % 8),
 		[OpCode.Jnz]: () => {
 			if (this.a === 0) {
 				this.instructionIndex++;
@@ -48,8 +48,8 @@ export class ChronospatialComputer {
 
 			this.instructionIndex = this.getComboOperandValue(true) - 1;
 		},
-		[OpCode.Bxc]: () => { this.getComboOperandValue(); this.b = this.b ^ this.c; },
-		[OpCode.Out]: () => this.output.push(this.getComboOperandValue() % 8),
+		[OpCode.Bxc]: () => { this.getComboOperandValue(); this.b = ((this.b ^ this.c) >>> 0); },
+		[OpCode.Out]: () => this.output.push((this.getComboOperandValue() % 8)),
 		[OpCode.Bdv]: () => this.b = Math.trunc(this.a / Math.pow(2, this.getComboOperandValue())),
 		[OpCode.Cdv]: () => this.c = Math.trunc(this.a / Math.pow(2, this.getComboOperandValue())),
 	};

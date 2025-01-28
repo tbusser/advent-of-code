@@ -2,7 +2,11 @@
 
 Part 1 was a fun exercise. It would've been done in a jiffy if I didn't mess up the power operation in JS. I wrote it as `2 ^ X` instead of `Math.pow(2, X)`. That took some debugging to find the issue. Once that was solved the proper answer was quickly found.
 
-Rating: **Easy**
+Part 2 was the polar opposite of part 1, I loathed it. As much as I tried I did not see the patterns. I did discover the minimal value, and maximum value, needed to generate an output of the desired length. This was still such a huge range that it didn't help me much at all. After banging my head on the problem for too long I did go looking for hints but this still left me clueless.
+
+In the end I caved and looked at the explanation of the problem and solution of a colleague of mine. This helped me "earn" my second star for day 17. The solution I used to find my answer was written by Rob Habraken and can be found [here](https://github.com/robhabraken/advent-of-code-2024/tree/main/solutions/17).
+
+Rating: **Easy** / **Extreme**
 
 ## Challenge description
 

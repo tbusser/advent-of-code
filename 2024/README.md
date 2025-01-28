@@ -20,7 +20,7 @@ A list of the challenges for 2024. I've rated each challenge on how difficult I 
 | [Day 14: Restroom Redoubt](./14/)       | Easy    | Hard    |
 | [Day 15: Warehouse Woes](./15/)         | Easy    | Medium  |
 | [Day 16: Reindeer Maze](./16/)          | Hard    | Medium  |
-| [Day 17: Chronospatial Computer](./17/) | Easy    |         |
+| [Day 17: Chronospatial Computer](./17/) | Easy    | Extreme |
 | [Day 18: RAM Run](./18/)                | Medium  | Easy    |
 | [Day 19: Linen Layout](./19/)           | Easy    | Easy    |
 | [Day 20: Race Condition](./20/)         | Easy    | Easy    |
