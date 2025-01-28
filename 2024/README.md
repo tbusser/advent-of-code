@@ -23,6 +23,7 @@ A list of the challenges for 2024. I've rated each challenge on how difficult I 
 | [Day 17: Chronospatial Computer](./17/) | Easy    |         |
 | [Day 18: RAM Run](./18/)                | Medium  | Easy    |
 | [Day 19: Linen Layout](./19/)           | Easy    | Easy    |
+| [Day 20: Race Condition](./20/)         | Easy    | Easy    |
 | [Day 21: Keypad Conundrum](./21/)       | Easy    | Medium  |
 | [Day 22: Monkey Market](./22/)          | Medium  | Easy    |
 | [Day 23: LAN Party](./23/)              | Easy    | Easy    |

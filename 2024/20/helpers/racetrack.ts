@@ -3,10 +3,7 @@ import { Coordinate, Grid } from '@helpers/grid.js';
 /* ========================================================================== */
 
 const symbol: Record<string, string> = {
-	baseline: 'B',
-	empty: '.',
 	end: 'E',
-	immutableWall: 'I',
 	start: 'S',
 	wall: '#'
 };
@@ -32,7 +29,7 @@ export class Racetrack extends Grid<string | number> {
 
 	/* ---------------------------------------------------------------------- */
 
-	private track: Set<number>;
+	private track: number[];
 
 	/* ---------------------------------------------------------------------- */
 
@@ -44,33 +41,29 @@ export class Racetrack extends Grid<string | number> {
 	 * @returns An array with the indexes of the cells that make up the
 	 *          racetrack ordered from start to end.
 	 */
-	private identifyTrack(): Set<number> {
+	private identifyTrack(): number[] {
+		const deltas = [-this.columnCount, 1, this.columnCount, -1];
 		const endIndex = this.grid.findIndex(cell => cell === symbol.end);
 		let position = this.grid.findIndex(cell => cell === symbol.start);
 		let tilesToGo = this.trackLength;
+		let previousPosition: number;
 
 		this.grid[position] = tilesToGo--;
-		const path = new Set<number>([position]);
+		const path: number[] = [position];
 
 		while (position !== endIndex) {
-			if (
-				this.grid[position - this.columnCount] !== symbol.wall &&
-				!path.has(position - this.columnCount)
-			) {
-				position -= this.columnCount;
-			} else if (this.grid[position + 1] !== symbol.wall && !path.has(position + 1)) {
-				position += 1;
-			} else if (
-				this.grid[position + this.columnCount] !== symbol.wall &&
-				!path.has(position + this.columnCount)
-			) {
-				position += this.columnCount;
-			} else if (this.grid[position - 1] !== symbol.wall && !path.has(position - 1)) {
-				position -= 1;
-			}
+			for (let index = 0; index < 4; index++) {
+				if (position + deltas[index] === previousPosition) continue;
+				if (this.grid[position + deltas[index]] === symbol.wall) continue;
 
-			this.grid[position] = tilesToGo--;
-			path.add(position);
+				previousPosition = position;
+				position = position + deltas[index];
+
+				this.grid[position] = tilesToGo--;
+				path.push(position);
+
+				break;
+			}
 		}
 
 		return path;
@@ -86,11 +79,11 @@ export class Racetrack extends Grid<string | number> {
 	 * @param distance The maximum number of moves for which collision detection
 	 *        can be disabled.
 	 */
-	private getCheatedDistances(origin: number, distance: number): number[] {
+	private getRemainingDistances(origin: number, distance: number): number[] {
 		const result: number[] = [];
 		// Convert the origin index to a coordinate within the grid.
 		const center: Coordinate = this.indexToCoordinate(origin);
-		const traveled: number = this.grid[origin] as number;
+		const originalDistance: number = (this.grid[origin] as number);
 
 		// Iterate over all the y positions within the distance from the origin
 		// cell. Start above the origin and go one row down for each iteration.
@@ -119,19 +112,18 @@ export class Racetrack extends Grid<string | number> {
 				if (typeof this.grid[origin + (yModifier * this.columnCount) + xModifier] !== 'number') continue;
 				// Make sure the possible destination cell is closer to the end
 				// point than the origin cell.
-				if (traveled < (this.grid[origin + (yModifier * this.columnCount) + xModifier] as number)) continue;
+				if (originalDistance < (this.grid[origin + (yModifier * this.columnCount) + xModifier] as number))
+					continue;
 
 				// We've found a valid destination cell, calculate the length of
 				// the race track with the current cheat applied. The length of
 				// the track is determined by adding the following values:
-				// 1) The number of traveled position from the start position.
-				// 2) The number of position left from the end of the cheat to
+				// 1) The number of position left from the end of the cheat to
 				//    the end of the track.
-				// 3) The distance traveled while cheating.
+				// 2) The distance traveled while cheating.
 				result.push(
-					traveled + // [1]
-					(this.grid[origin + (yModifier * this.columnCount) + xModifier] as number) + // [2]
-					Math.abs(yModifier) + Math.abs(xModifier) /// [3]
+					(this.grid[origin + (yModifier * this.columnCount) + xModifier] as number) + // [1]
+					Math.abs(yModifier) + Math.abs(xModifier) /// [2]
 				);
 			}
 		}
@@ -141,9 +133,9 @@ export class Racetrack extends Grid<string | number> {
 
 	public findCheats(threshold: number, distance: number = 2): number {
 		// Iterate over all the cells of the track, in order from start to end.
-		return this.track.values().reduce<number>((cheats, cellIndex) => {
+		return this.track.reduce<number>((cheats, cellIndex, traveled) => {
 			// Get all the cells which can be reached from the current cell.
-			this.getCheatedDistances(cellIndex, distance).forEach(cheatedDistance => {
+			this.getRemainingDistances(cellIndex, distance).forEach(remainingDistance => {
 				// The trackIndex is the number of moves we are away from the
 				// start. Add to this the number of moves the destination cell
 				// is away from the end position and we add the distance
@@ -151,7 +143,7 @@ export class Racetrack extends Grid<string | number> {
 				// cheat.
 				// When we subtract this number from the original track length
 				// we get the number of picoseconds saved by this cheat.
-				if (this.trackLength - cheatedDistance >= threshold) cheats++;
+				if (this.trackLength - (traveled + remainingDistance) >= threshold) cheats++;
 			});
 
 			return cheats;
