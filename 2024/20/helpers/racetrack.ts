@@ -136,7 +136,7 @@ export class Racetrack extends Grid<string | number> {
 		return this.track.reduce<number>((cheats, cellIndex, traveled) => {
 			// Get all the cells which can be reached from the current cell.
 			this.getRemainingDistances(cellIndex, distance).forEach(remainingDistance => {
-				// The trackIndex is the number of moves we are away from the
+				// The traveled var is the number of moves we are away from the
 				// start. Add to this the number of moves the destination cell
 				// is away from the end position and we add the distance
 				// traveled for the cheat we get the total track length for the
