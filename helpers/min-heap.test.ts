@@ -33,7 +33,7 @@ describe('helpers', () => {
 		it('should reorganize after extracting the root element', () => {
 			const heap = new MinHeap(x => x);
 			heap.push(10, 15, 20, 17, 8);
-			heap.pop();
+			expect(heap.pop()).toEqual(8);
 			expect(heap.content).toEqual([10, 15, 20, 17]);
 		});
 
@@ -41,6 +41,23 @@ describe('helpers', () => {
 			const heap = new MinHeap(x => x);
 			heap.push(5, 15, 15, 15);
 			expect(heap.content).toEqual([5, 15, 15, 15]);
+		});
+
+		it('should be able to rescore an item', () => {
+			const heap = new MinHeap(x => x);
+			heap.push(10, 15, 20, 17, 30);
+			heap.updateItem(i => i === 30, 8);
+			expect(heap.content).toEqual([8, 10, 20, 17, 15]);
+		});
+
+		it('should keep the items ordered when taking items out', () => {
+			const heap = new MinHeap(x => x);
+			heap.push(1, 1001, 2, 1002, 3, 1003, 4, 1004, 5, 1005, 6, 1006);
+			const items = [];
+			while (heap.size > 0) {
+				items.push(heap.pop());
+			}
+			expect(items).toEqual([1, 2, 3, 4, 5, 6, 1001, 1002, 1003, 1004, 1005, 1006]);
 		});
 	});
 });
