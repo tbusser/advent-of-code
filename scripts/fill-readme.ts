@@ -47,7 +47,9 @@ function htmlToMarkdown(html: string): string {
 		.replace(/<em>(.*?)<\/em>/g, '**$1**')
 		.replace(/<li>(.*?)<\/li>/g, '- $1')
 		.replace(/<ul>\s/g, '')
-		.replace(/<\/ul>/g, '');
+		.replace(/<\/ul>/g, '')
+		.replace(/&gt;/g, '>')
+		.replace(/&lt;/g, '<');
 }
 
 function readReadMe(path: string): string {
@@ -60,9 +62,14 @@ function readReadMe(path: string): string {
 }
 
 function replaceDescriptions(readMe: string, descriptions: string[]): string {
-	return readMe
-		.replace(partOnePlaceholder, descriptions[0])
-		.replace(partTwoPlaceholder, descriptions[1]);
+	if (descriptions[0] !== undefined) {
+		readMe = readMe.replace(partOnePlaceholder, descriptions[0]);
+	}
+	if (descriptions[1] !== undefined) {
+		readMe = readMe.replace(partTwoPlaceholder, descriptions[1]);
+	}
+
+	return readMe;
 }
 
 function replaceTitle(challenge: string, readMe: string): string {
