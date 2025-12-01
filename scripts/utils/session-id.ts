@@ -6,4 +6,4 @@ dotenv.config();
 
 /* ========================================================================== */
 
-export const sessionId = process.env.SESSION_ID || 'session-id';
+export const sessionId = process.env.SESSION_ID || undefined;

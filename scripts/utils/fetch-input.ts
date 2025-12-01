@@ -12,11 +12,28 @@ const fileName = 'input.txt';
 /* ========================================================================== */
 
 async function fetchInput(url: string): Promise<string> {
-	const data = await fetch(url, {
-		headers: {
-			cookie: `session=${sessionId}`
-		}
-	});
+	if (sessionId === undefined) {
+		console.error(
+			'Unable to find session ID. Please place your session ID in the ".env" file in the root of the project. See the README for more information.'
+		);
+		process.exit(1);
+	}
+
+	let data: Response;
+	try {
+		data = await fetch(url, {
+			headers: {
+				cookie: `session=${sessionId}`
+			}
+		});
+	} catch (error) {
+		console.error(error);
+		process.exit(1);
+	}
+
+	if (data.status !== 200) {
+		console.error('There was an issue retrieving the puzzle input. Please check your session ID.');
+	}
 
 	const test = await data.text();
 
@@ -43,10 +60,6 @@ export async function fetchInputForDay(year: number, day: number): Promise<strin
 	const text = fileExists
 		? fs.readFileSync(getInputPathForDay(year, day), 'utf-8')
 		: await fetchInput(`https://adventofcode.com/${year}/day/${day}/input`);
-
-	if (text === defaultError) {
-		throw new Error('Please set the session ID in the .env file.');
-	}
 
 	if (!fileExists) {
 		fs.writeFileSync(fileName, text);
