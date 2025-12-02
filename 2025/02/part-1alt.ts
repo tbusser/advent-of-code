@@ -7,7 +7,7 @@
  | strings should be possible. This is the solution using only numbers.
  |
  |*/
-import { parseInput } from './helpers/parse-input.js';
+import { type Input, parseInput } from './helpers/parse-input.js';
 
 /* ========================================================================== */
 
@@ -18,15 +18,15 @@ function digitsInNumber(value: number): number {
 /* -------------------------------------------------------------------------- */
 
 function solver(input: string): number {
-	const ranges = parseInput(input);
+	const ranges: Input = parseInput(input);
 	let total: number = 0;
 
 	for (const [start, end] of ranges) {
-		for (let id = start; id <= end; id++) {
+		for (let id: number = start; id <= end; id++) {
 			// IDs with an odd number of digits are always valid, skip them.
 			if (digitsInNumber(id) % 2 === 1) continue;
 
-			const halfDigitPowerOfTen = Math.pow(10, digitsInNumber(id) / 2);
+			const halfDigitPowerOfTen: number = Math.pow(10, digitsInNumber(id) / 2);
 			// Get the first batch x digits of the number.
 			// Example: 11223344 -> 1122
 			// Use "0 |"" to force the result to a whole number.
