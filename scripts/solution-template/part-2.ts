@@ -1,9 +1,9 @@
-import { parseInput } from './helpers/parse-input.js';
+import { type Input, parseInput } from './helpers/parse-input.js';
 
 /* ========================================================================== */
 
 function solver(input: string): number {
-	const data = parseInput(input);
+	const data: Input = parseInput(input);
 
 	return -1;
 }

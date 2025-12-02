@@ -1,3 +1,7 @@
-export function parseInput(input: string): string {
+export type Input = string;
+
+/* ========================================================================== */
+
+export function parseInput(input: string): Input {
 	return input;
 }
