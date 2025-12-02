@@ -5,7 +5,7 @@ A list of the challenges for 2025. I've rated each challenge on how difficult I 
 |                                 | Part 1 | Part 2 |
 | ------------------------------- | ------ | ------ |
 | [Day 1: Secret Entrance](./01/) | Easy   | Easy   |
-| [Day 2: TBD](./02/)             |        |        |
+| [Day 2: Gift Shop](./02/)       | Easy   | Easy   |
 | [Day 3: TBD](./03/)             |        |        |
 | [Day 4: TBD](./04/)             |        |        |
 | [Day 5: TBD](./05/)             |        |        |
