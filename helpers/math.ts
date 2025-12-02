@@ -1,3 +1,19 @@
+export function getPrimeFactors(integer: number): number[] | null {
+	const factors: number[] = [];
+	let divisor: number = 2;
+
+	while (integer > 1) {
+		if (integer % divisor === 0) {
+			factors.push(divisor);
+			integer /= divisor;
+		} else {
+			divisor++;
+		}
+	}
+
+	return factors;
+}
+
 /**
  * The implementation of the modulo operator as explained the remainder operator
  * page on MDN.

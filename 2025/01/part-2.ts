@@ -1,5 +1,5 @@
 import { parseInput } from './helpers/parse-input.js';
-import { modulo } from '@helpers/modulo.js';
+import { modulo } from '@helpers/math.js';
 
 /* ========================================================================== */
 
@@ -22,13 +22,13 @@ function countZeroCrossings(startPosition: number, distance: number): number {
 	// When the end position is below 0 we should've be passed the 0 position
 	// once. This is true except when we started at 0, in this case we never
 	// passed the 0 position.
-	const belowStartCorrection = (endPosition < 0 && startPosition !== 0) ? 1 : 0;
+	const belowStartCorrection: number = (endPosition < 0 && startPosition !== 0) ? 1 : 0;
 	// If the end position is over the number of positions, we will wrap back to
 	// 0 and thus the 0 position was seen once.
-	const overEndCorrection = endPosition > numberOfPositions ? 1 : 0;
+	const overEndCorrection: number = endPosition > numberOfPositions ? 1 : 0;
 	// When the dial ends at 0 or at 100 (which becomes 0 after correction) we
 	// have seen the 0 position once.
-	const perfectEndCorrection = (endPosition % numberOfPositions === 0) ? 1 : 0;
+	const perfectEndCorrection: number = (endPosition % numberOfPositions === 0) ? 1 : 0;
 
 	return fullRotations + belowStartCorrection + overEndCorrection + perfectEndCorrection;
 }
@@ -36,14 +36,14 @@ function countZeroCrossings(startPosition: number, distance: number): number {
 /* -------------------------------------------------------------------------- */
 
 function solver(input: string): number {
-	const instructions = parseInput(input);
+	const instructions: number[] = parseInput(input);
 
 	let position: number = 50;
 	let count: number = 0;
 
-	for (const instruction of instructions) {
-		count += countZeroCrossings(position, instruction);
-		position = modulo(position + instruction, numberOfPositions);
+	for (const distance of instructions) {
+		count += countZeroCrossings(position, distance);
+		position = modulo(position + distance, numberOfPositions);
 	}
 
 	return count;
