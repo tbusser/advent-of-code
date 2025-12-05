@@ -13,10 +13,9 @@ export function parseInput(input: string): Input {
 	return {
 		ranges: rangesInput.split('\n').map(range =>
 			range.split('-').map(Number) as Range
-		).sort((a, b) =>
-			// When the range start is equal, sort the ranges based on the
-			// end of the range
-			a[0] - b[0] === 0 ? a[1] - b[1] : a[0] - b[0]
+		).sort(
+			// Sort the ranges ascending by their start id.
+			(a, b) => a[0] - b[0]
 		),
 		ingredients: ingredientsInput.split('\n').map(Number)
 	};
