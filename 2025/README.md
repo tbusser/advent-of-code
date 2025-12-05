@@ -2,20 +2,20 @@
 
 A list of the challenges for 2025. I've rated each challenge on how difficult I found it so solve. For a description of what challenges I've faced, see the README for a specific day.
 
-|                                 | Part 1 | Part 2 |
-| ------------------------------- | ------ | ------ |
-| [Day 1: Secret Entrance](./01/) | Easy   | Easy   |
-| [Day 2: Gift Shop](./02/)       | Easy   | Easy   |
-| [Day 3: Lobby](./03/)           | Easy   | Easy   |
-| [Day 4: TBD](./04/)             |        |        |
-| [Day 5: TBD](./05/)             |        |        |
-| [Day 6: TBD](./06/)             |        |        |
-| [Day 7: TBD](./07/)             |        |        |
-| [Day 8: TBD](./08)              |        |        |
-| [Day 9: TBD](./09/)             |        |        |
-| [Day 10: TBD](./10/)            |        |        |
-| [Day 11: TBD](./11/)            |        |        |
-| [Day 12: TBD](./12/)            |        |        |
+|                                     | Part 1 | Part 2 |
+| ----------------------------------- | ------ | ------ |
+| [Day 1: Secret Entrance](./01/)     | Easy   | Easy   |
+| [Day 2: Gift Shop](./02/)           | Easy   | Easy   |
+| [Day 3: Lobby](./03/)               | Easy   | Easy   |
+| [Day 4: Printing Department](./04/) | Easy   | Easy   |
+| [Day 5: Cafeteria](./05/)           | Easy   | Easy   |
+| [Day 6: TBD](./06/)                 |        |        |
+| [Day 7: TBD](./07/).                |        |        |
+| [Day 8: TBD](./08)                  |        |        |
+| [Day 9: TBD](./09/)                 |        |        |
+| [Day 10: TBD](./10/)                |        |        |
+| [Day 11: TBD](./11/)                |        |        |
+| [Day 12: TBD](./12/)                |        |        |
 
 ## Legend
 
