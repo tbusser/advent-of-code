@@ -7,7 +7,7 @@ function solver(input: string): number {
 	let freshCount: number = 0;
 
 	for (const ingredient of inventory.ingredients) {
-		if (inventory.ranges.some(range => range[0] <= ingredient && range[1] >= ingredient)) freshCount++;
+		if (inventory.ranges.some(range => range.start <= ingredient && range.end >= ingredient)) freshCount++;
 	}
 
 	return freshCount;
