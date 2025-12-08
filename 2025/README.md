@@ -11,7 +11,7 @@ A list of the challenges for 2025. I've rated each challenge on how difficult I 
 | [Day 5: Cafeteria](./05/)           | Easy   | Easy   |
 | [Day 6: Trash Compactor](./06/)     | Easy   | Easy   |
 | [Day 7: Laboratories](./07/).       | Medium |        |
-| [Day 8: TBD](./08)                  |        |        |
+| [Day 8: Playground](./08)           | Medium | Easy   |
 | [Day 9: TBD](./09/)                 |        |        |
 | [Day 10: TBD](./10/)                |        |        |
 | [Day 11: TBD](./11/)                |        |        |
