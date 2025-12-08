@@ -10,7 +10,7 @@ A list of the challenges for 2025. I've rated each challenge on how difficult I 
 | [Day 4: Printing Department](./04/) | Easy   | Easy   |
 | [Day 5: Cafeteria](./05/)           | Easy   | Easy   |
 | [Day 6: Trash Compactor](./06/)     | Easy   | Easy   |
-| [Day 7: TBD](./07/).                |        |        |
+| [Day 7: Laboratories](./07/).       | Medium |        |
 | [Day 8: TBD](./08)                  |        |        |
 | [Day 9: TBD](./09/)                 |        |        |
 | [Day 10: TBD](./10/)                |        |        |
