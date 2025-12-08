@@ -60,8 +60,10 @@ function solver(input: string): number {
 			circuits[circuitSource] = 0;
 		}
 
-		const done = Object.keys(junctionToCircuitMap).length === junctionBoxes.length && circuits.filter(value => value === 0).length === circuits.length - 1;
-		if (done) {
+		// When the size of the circuit the current connection belongs to
+		// matches the total number of junction boxes we can stop processing
+		// further connections. The circuit is complete.
+		if (circuits[junctionToCircuitMap[connection.a]] === junctionBoxes.length) {
 			return Number(connection.a.split(',')[0]) * Number(connection.b.split(',')[0]);
 		}
 	}
