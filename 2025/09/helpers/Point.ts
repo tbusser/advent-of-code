@@ -25,7 +25,7 @@ export class Point {
 
 	/* ---------------------------------------------------------------------- */
 
-	static #points = new LazyMap<number, LazyMap<number, Point>>(
+	static readonly #points = new LazyMap<number, LazyMap<number, Point>>(
 		(x: number) => new LazyMap((y: number) => new Point(x, y))
 	);
 
@@ -46,8 +46,8 @@ export class Point {
 	 *
 	 * @param a The first endpoint of the line segment
 	 * @param b The second endpoint of the line segment
-	 * @returns `true` if the ray from this point intersects the segment;
-	 *          otherwise `false`
+	 * @returns true if the ray from this point intersects the segment;
+	 *          otherwise false
 	 */
 	public rayIntersectsSegment(a: Point, b: Point): boolean {
 		return (
@@ -69,7 +69,7 @@ export class Point {
 	 *
 	 * @param a - First endpoint of the segment
 	 * @param b - Second endpoint of the segment
-	 * @returns `true` if this point lies on segment AB; otherwise `false`
+	 * @returns true if this point lies on segment AB; otherwise false.
 	 */
 	public isOnSegment(a: Point, b: Point): boolean {
 		// Reject immediately if the point is not collinear with segment AB.
