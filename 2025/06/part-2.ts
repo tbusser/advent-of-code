@@ -6,7 +6,7 @@ function solveProblem(values: number[], operator: string): number {
 
 // - pad all lines to have equal width
 // Start at length - 1 and read the chars at all lines for that position
-// - All numberic => found a number
+// - All numeric => found a number
 //.- Numeric and string => found a number plus an operator
 // - All spaces => found a delimiter, solve the problem and add result to total.
 function solver(input: string): number {
