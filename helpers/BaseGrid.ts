@@ -1,14 +1,15 @@
 import { chunk } from './array.js';
 import { digitsInNumber } from './math.js';
 
-type Coordinate = { x: number; y: number; };
-type Direction = 'down' | 'down-left' | 'down-right' | 'left' | 'right' | 'up' | 'up-left' | 'up-right';
+export type Coordinate = { x: number; y: number; };
+export type Direction = 'down' | 'down-left' | 'down-right' | 'left' | 'right' | 'up' | 'up-left' | 'up-right';
 type Neighbor<T> = {
 	direction: Direction;
 	index: number;
 	value: T
 };
 type Position = number | Coordinate;
+type ForEachNeighborCallback<T> = (index: number, direction: Direction, value: T) => void;
 
 const defaultDirections: Direction[] = ['up', 'right', 'down', 'left'];
 const directionOffsets: Record<Direction, [x: number, y: number]> = {
@@ -25,7 +26,7 @@ const directionOffsets: Record<Direction, [x: number, y: number]> = {
 /* ========================================================================== */
 
 export class BaseGrid<T = string> {
-	constructor(protected grid: T[], protected readonly columns: number) {
+	constructor(protected grid: T[], public readonly columns: number) {
 		this.rows = (grid.length / columns) | 0;
 	}
 
@@ -71,6 +72,26 @@ export class BaseGrid<T = string> {
 			.map((row, index) => `${(index * this.columns).toString().padStart(indexLength, '0')} ${row.join('')}`);
 		// Log the rows.
 		console.log(rows.join('\n'));
+	}
+
+	public forEachNeighbor(
+		position: Position,
+		callback: ForEachNeighborCallback<T>,
+		directions: Direction[] = defaultDirections
+	): void {
+		const { x, y } = this.positionToCoordinate(position);
+
+		for (let index = 0; index < directions.length; index++) {
+			const [xOffset, yOffset] = directionOffsets[directions[index]];
+			const newX: number = x + xOffset;
+			if (newX < 0 || newX >= this.columns) continue;
+
+			const newY: number = y + yOffset;
+			if (newY < 0 || newY >= this.rows) continue;
+
+			const neighborIndex = newX + (newY * this.columns);
+			callback(neighborIndex, directions[index], this.grid[neighborIndex]);
+		}
 	}
 
 	public neighbors(position: Position, directions: Direction[] = defaultDirections): Neighbor<T>[] {
