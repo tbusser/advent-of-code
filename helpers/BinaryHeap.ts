@@ -193,11 +193,9 @@ export class BinaryHeap<T = number> {
 	 * Adds one or more items to the heap.
 	 * @param items The item(s) to add.
 	 */
-	push(...items: T[]) {
-		for (const item of items) {
-			this.items.push(item);
-			this.bubbleUp();
-		}
+	push(item: T) {
+		this.items.push(item);
+		this.bubbleUp();
 	}
 
 	/**
