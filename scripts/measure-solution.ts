@@ -18,23 +18,13 @@
  |*/
 
 import { collectPerformanceData } from './utils/collect-performance-data.js';
+import { formatDuration } from './utils/format-duration.js';
 import { resolveChallengeParamToPart } from './utils/resolve-challenge-param-to-part.js';
 
 /* ========================================================================== */
 
 const { day, path, year } = resolveChallengeParamToPart(process.argv[2]);
 const sampleSize = isNaN(Number(process.argv[3])) ? undefined : Number(process.argv[3]);
-
-const numberFormatter = new Intl.NumberFormat('en', {
-	maximumFractionDigits: 5,
-	minimumFractionDigits: 5
-});
-
-/* ========================================================================== */
-
-function formatDuration(duration: number): string {
-	return `${numberFormatter.format(duration)}ms`;
-}
 
 /* ========================================================================== */
 

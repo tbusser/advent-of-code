@@ -1,4 +1,5 @@
 import { fetchInputForDay } from './fetch-input.js';
+import { formatDuration } from './format-duration.js';
 import { measure } from './measure.js';
 
 /* ========================================================================== */
@@ -17,5 +18,5 @@ export async function solve(config: Config) {
 	const result = measure(config.solver, input);
 
 	console.log(`${config.prompt}:`, result.answer);
-	console.log(`Time taken: ${result.duration}ms`);
+	console.log(`Time taken: ${formatDuration(result.duration)}`);
 }
