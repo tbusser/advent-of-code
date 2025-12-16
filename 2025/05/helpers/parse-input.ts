@@ -19,7 +19,7 @@ export function parseInput(input: string): Input {
 			return { start: limits[0], end: limits[1] };
 		}).sort(
 			// Sort the ranges ascending by their start id.
-			(a, b) => a[0] - b[0]
+			(a, b) => a.start - b.start
 		),
 		ingredients: ingredientsInput.split('\n').map(Number)
 	};

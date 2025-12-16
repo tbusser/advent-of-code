@@ -7,7 +7,7 @@ function solver(input: string): number {
 	const inventory: Input = parseInput(input);
 	const optimizedRanges = optimizeRanges(inventory.ranges);
 
-	return optimizedRanges.reduce((sum, range) => sum + (range[1] - range[0]) + 1, 0);
+	return optimizedRanges.reduce((sum, range) => sum + (range.end - range.start) + 1, 0);
 }
 
 /* ========================================================================== */
