@@ -5,14 +5,6 @@ import { LightGrid } from './helpers/light-grid.js';
 function solver(input: string): number {
 	const grid = LightGrid.createLightGrid(input, true);
 
-	// Ensure all four corners are switched on.
-	grid.patch([
-		{ index: grid.indexBottomLeft, value: true },
-		{ index: grid.indexBottomRight, value: true },
-		{ index: grid.indexTopLeft, value: true },
-		{ index: grid.indexTopRight, value: true }
-	]);
-
 	// Perform 100 steps with the skip corners parameter set to true. This will
 	// ensure the corner lights will never change state.
 	for (let index = 0; index < 100; index++) {

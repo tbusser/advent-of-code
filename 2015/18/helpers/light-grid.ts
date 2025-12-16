@@ -20,6 +20,13 @@ export class LightGrid extends BaseGrid<boolean> {
 		this.indexTopRight = this.columns - 1;
 		this.indexBottomLeft = (this.rows - 1) * this.columns;
 		this.indexBottomRight = (this.rows * this.columns) - 1;
+
+		if (lockCorners) {
+			this.grid[this.indexBottomLeft] = true;
+			this.grid[this.indexBottomRight] = true;
+			this.grid[this.indexTopLeft] = true;
+			this.grid[this.indexTopRight] = true;
+		}
 	}
 
 	/* ---------------------------------------------------------------------- */
@@ -59,32 +66,29 @@ export class LightGrid extends BaseGrid<boolean> {
 
 	/* ---------------------------------------------------------------------- */
 
-	public patch(updates: PatchInstruction[]) {
-		for (const update of updates) {
-			this.grid[update.index] = update.value;
-		};
-	}
-
 	public step() {
-		const updates: PatchInstruction[] = [];
+		const nextGrid = new Array(this.grid.length).fill(false);
 
-		this.grid.forEach((state, index) => {
+		for (let index: number = 0; index < this.grid.length; index++) {
+			// this.grid.forEach((state, index) => {
 			// Check if the corners should be skipped, if so we can continue if
 			// the current index is for one of the four corners.
-			if (this.lockCorners && this.isCornerPosition(index)) return;
+			if (this.lockCorners && this.isCornerPosition(index)) {
+				nextGrid[index] = true;
 
-			// Get the neighbors of the cell.
-			const neighbors = this.neighbors(index, directions);
-			// Count the number of neighbors which are on.
-			const switchedOnNeighbors = neighbors.filter(neighbor => neighbor.value).length;
-
-			if (state && (switchedOnNeighbors !== 2 && switchedOnNeighbors !== 3)) {
-				updates.push({ index, value: !state });
-			} else if (!state && switchedOnNeighbors === 3) {
-				updates.push({ index, value: !state });
+				continue;
 			}
-		});
 
-		this.patch(updates);
+			let switchedOnNeighbors: number = 0;
+			this.forEachNeighbor(index, (_, __, value) => {
+				if (value) switchedOnNeighbors++;
+			}, directions);
+
+			nextGrid[index] = this.grid[index]
+				? (switchedOnNeighbors === 2 || switchedOnNeighbors === 3)
+				: (switchedOnNeighbors === 3);
+		}
+
+		this.grid = nextGrid;
 	}
 }
