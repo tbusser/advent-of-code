@@ -1,4 +1,4 @@
-import { Grid } from '@helpers/grid.js';
+import { BaseGrid } from '@helpers/BaseGrid.js';
 
 /* ========================================================================== */
 
@@ -9,7 +9,7 @@ const symbol = {
 
 /* ========================================================================== */
 
-export class ResearchGrid extends Grid {
+export class ResearchGrid extends BaseGrid {
 	constructor(grid: string[], columns: number) {
 		super(grid, columns);
 
@@ -18,7 +18,7 @@ export class ResearchGrid extends Grid {
 
 	/* ---------------------------------------------------------------------- */
 
-	private startIndex: number;
+	private readonly startIndex: number;
 
 	/* ---------------------------------------------------------------------- */
 
@@ -41,26 +41,81 @@ export class ResearchGrid extends Grid {
 		let beams: number[] = [this.startIndex];
 		const splitPositions = new Set<number>();
 
-		while (beams.length > 0) {
-			const nextBeams = new Set<number>();
-			beams.forEach(beam => {
-				const neighbors = this.neighbors(beam, ['down', 'down-left', 'down-right']);
-				if (neighbors.length === 0) return;
-				if (neighbors[0].value === symbol.splitter) {
-					splitPositions.add(neighbors[0].index);
-					if (neighbors[1] !== undefined) nextBeams.add(neighbors[1].index);
-					if (neighbors[2] !== undefined) nextBeams.add(neighbors[2].index);
-				} else if (neighbors[0].direction === 'down') {
-					nextBeams.add(neighbors[0].index);
+		// Iterate over all the rows in the grid from top to bottom.
+		for (let rowIndex: number = 1; rowIndex < this.rows; rowIndex++) {
+			const splitBeams = new Set<number>();
+			const rowOffset = this.columns * rowIndex;
+
+			for (const beam of beams) {
+				// Check if there is a splitter at the beam location in the
+				// current row.
+				if (this.grid[rowOffset + beam] === symbol.splitter) {
+					// Add the position of the splitter to the set.
+					splitPositions.add(rowOffset + beam);
+					// Add a beam to the left and right of the splitter.
+					splitBeams.add(beam - 1);
+					splitBeams.add(beam + 1);
+				} else {
+					// There is no splitter, the beam continues as-is.
+					splitBeams.add(beam);
 				}
-			});
-			beams = [...nextBeams];
+			}
+
+			beams = Array.from(splitBeams);
 		}
 
 		return splitPositions.size;
 	}
 
 	public countTimelines(): number {
-		return -1;
+		// Create an array where each item represents a column in the grid.
+		// Initialize the number of beams to 0 except for the starting position
+		// where the count should be 1.
+		let previousRow: number[] = new Array(this.columns).fill(0);
+		let currentRow: number[] = new Array(this.columns);
+		previousRow[this.startIndex] = 1;
+
+		// Iterate over all the rows in the grid from top to bottom.
+		for (let rowIndex: number = 1; rowIndex < this.rows; rowIndex++) {
+			// Initialize an array for the current row, defaulting to 0 beams
+			// for each column.
+			currentRow.fill(0);
+
+			const rowOffset = this.columns * rowIndex;
+
+			for (let columnIndex: number = 0; columnIndex < this.columns; columnIndex++) {
+				const previousCount: number = previousRow[columnIndex];
+
+				// When there is no beam in the column, skip processing it.
+				if (previousCount === 0) continue;
+
+				// Check if there is a splitter at the beam location in the
+				// current row.
+				if (this.grid[rowOffset + columnIndex] === symbol.splitter) {
+					// Add the number of beams going through the column in the
+					// previous row to the left and right columns in the
+					// current row.
+					currentRow[(columnIndex - 1)] += previousCount;
+					currentRow[(columnIndex + 1)] += previousCount;
+				} else {
+					// Not a splitter, just add the number of beams in the
+					// column from the previous row to the count of the
+					// current row.
+					currentRow[columnIndex] += previousCount;
+				}
+			}
+
+			// Swap current and previous round.
+			[previousRow, currentRow] = [currentRow, previousRow];
+		}
+
+		// Calculate the sum of all beams per column, this will give the total
+		// number of timelines.
+		let sum: number = 0;
+		for (let index: number = 0; index < previousRow.length; index++) {
+			sum += previousRow[index];
+		}
+
+		return sum;
 	}
 }

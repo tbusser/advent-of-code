@@ -1,6 +1,6 @@
 # Day 7: Laboratories
 
-Rating: **Medium/**
+Rating: **Medium/Hard**
 
 ## Challenge description
 
