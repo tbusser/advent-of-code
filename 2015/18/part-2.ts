@@ -1,23 +1,22 @@
-import { LightGrid, onValue } from './helpers/light-grid.js';
+import { LightGrid } from './helpers/light-grid.js';
 
 /* ========================================================================== */
 
 function solver(input: string): number {
-	const grid = LightGrid.createLightGrid(input);
-	const endPosition = grid.columnCount - 1;
+	const grid = LightGrid.createLightGrid(input, true);
 
 	// Ensure all four corners are switched on.
 	grid.patch([
-		{ position: { x: 0, y: 0 }, value: onValue },
-		{ position: { x: endPosition, y: 0 }, value: onValue },
-		{ position: { x: 0, y: endPosition }, value: onValue },
-		{ position: { x: endPosition, y: endPosition }, value: onValue }
+		{ index: grid.indexBottomLeft, value: true },
+		{ index: grid.indexBottomRight, value: true },
+		{ index: grid.indexTopLeft, value: true },
+		{ index: grid.indexTopRight, value: true }
 	]);
 
 	// Perform 100 steps with the skip corners parameter set to true. This will
 	// ensure the corner lights will never change state.
 	for (let index = 0; index < 100; index++) {
-		grid.step(true);
+		grid.step();
 	}
 
 	return grid.numberOfLitLights;

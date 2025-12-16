@@ -3,7 +3,7 @@ import { LightGrid } from './helpers/light-grid.js';
 /* ========================================================================== */
 
 function solver(input: string): number {
-	const grid = LightGrid.createLightGrid(input);
+	const grid = LightGrid.createLightGrid(input, false);
 
 	for (let index = 0; index < 100; index++) {
 		grid.step();

@@ -1,85 +1,87 @@
-import { Coordinate, Grid } from '@helpers/grid.js';
+import { Direction, BaseGrid } from '@helpers/BaseGrid.js';
 
 /* ========================================================================== */
 
-export const onValue = '#';
-export const offValue = '.';
-
-type LightState = typeof onValue | typeof offValue;
+const directions: Direction[] = ['up', 'up-right', 'right', 'down-right', 'down', 'down-left', 'left', 'up-left'];
 
 type PatchInstruction = {
-	position: Coordinate | number;
-	value: LightState;
+	index: number;
+	value: boolean;
 };
 
 /* ========================================================================== */
 
-export class LightGrid extends Grid<LightState> {
-	constructor(grid: LightState[], columns: number) {
+export class LightGrid extends BaseGrid<boolean> {
+	constructor(grid: boolean[], columns: number, readonly lockCorners: boolean) {
 		super(grid, columns);
+
+		// Precalculate the corner positions since they're static once the grid
+		// is created.
+		this.indexTopRight = this.columns - 1;
+		this.indexBottomLeft = (this.rows - 1) * this.columns;
+		this.indexBottomRight = (this.rows * this.columns) - 1;
 	}
+
+	/* ---------------------------------------------------------------------- */
+
+	public readonly indexTopLeft: number = 0;
+	public readonly indexTopRight: number;
+	public readonly indexBottomLeft: number;
+	public readonly indexBottomRight: number;
 
 	public get numberOfLitLights(): number {
-		return this.grid.filter(value => value === onValue).length;
+		return this.grid.filter(value => value).length;
 	}
 
 	/* ---------------------------------------------------------------------- */
 
-	static createLightGrid(input: string): LightGrid {
-		const lines = input.split('\n');
+	static createLightGrid(input: string, lockCorners: boolean): LightGrid {
+		const lines: string[] = input.split('\n');
 		const columns = lines[0].length;
-		const grid = lines.join('').split('');
+		// Convert the characters to a boolean, this will speed up the
+		// comparisons per step as a boolean comparison is much faster than
+		// comparing strings every time.
+		const grid = lines.flatMap(line => line.split('').map(item => item === '#'));
 
-		return new LightGrid(grid as LightState[], columns);
+		return new LightGrid(grid, columns, lockCorners);
 	}
 
 	/* ---------------------------------------------------------------------- */
 
-	private isCornerPosition(position: number | Coordinate): boolean {
-		const coordinate = typeof position === 'number'
-			? this.indexToCoordinate(position)
-			: position;
-
-		if (coordinate.x === 0 && (coordinate.y === 0 || coordinate.y === this.columnCount - 1)) {
-			return true;
-		}
-
-		if (coordinate.x === this.columnCount - 1 && (coordinate.y === 0 || coordinate.y === this.columnCount - 1)) {
-			return true;
-		}
+	private isCornerPosition(index: number): boolean {
+		return (
+			index === this.indexBottomLeft ||
+			index === this.indexBottomRight ||
+			index === this.indexTopLeft ||
+			index === this.indexTopRight
+		);
 	}
 
 	/* ---------------------------------------------------------------------- */
 
 	public patch(updates: PatchInstruction[]) {
-		updates.forEach(update => {
-			const index = this.positionToIndex(update.position);
-
-			this.grid[index] = update.value;
-		});
+		for (const update of updates) {
+			this.grid[update.index] = update.value;
+		};
 	}
 
-	public step(skipCorners = false) {
+	public step() {
 		const updates: PatchInstruction[] = [];
 
 		this.grid.forEach((state, index) => {
 			// Check if the corners should be skipped, if so we can continue if
 			// the current index is for one of the four corners.
-			if (skipCorners && this.isCornerPosition(index)) return;
+			if (this.lockCorners && this.isCornerPosition(index)) return;
 
 			// Get the neighbors of the cell.
-			const neighbors = this.neighbors(index);
+			const neighbors = this.neighbors(index, directions);
 			// Count the number of neighbors which are on.
-			const switchedOnNeighbors = neighbors.filter(neighbor => neighbor.value === onValue).length;
+			const switchedOnNeighbors = neighbors.filter(neighbor => neighbor.value).length;
 
-			if (state === onValue) {
-				if (switchedOnNeighbors !== 2 && switchedOnNeighbors !== 3) {
-					updates.push({ position: index, value: offValue });
-				}
-			} else {
-				if (switchedOnNeighbors === 3) {
-					updates.push({ position: index, value: onValue });
-				}
+			if (state && (switchedOnNeighbors !== 2 && switchedOnNeighbors !== 3)) {
+				updates.push({ index, value: !state });
+			} else if (!state && switchedOnNeighbors === 3) {
+				updates.push({ index, value: !state });
 			}
 		});
 
