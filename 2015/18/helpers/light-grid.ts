@@ -4,11 +4,6 @@ import { Direction, BaseGrid } from '@helpers/BaseGrid.js';
 
 const directions: Direction[] = ['up', 'up-right', 'right', 'down-right', 'down', 'down-left', 'left', 'up-left'];
 
-type PatchInstruction = {
-	index: number;
-	value: boolean;
-};
-
 /* ========================================================================== */
 
 export class LightGrid extends BaseGrid<boolean> {
