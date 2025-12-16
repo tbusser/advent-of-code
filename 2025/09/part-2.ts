@@ -1,6 +1,6 @@
 import { parseInput } from './helpers/parse-input.js';
-import { Point } from './helpers/Point.js';
-import { Polygon } from './helpers/Polygon.js';
+import { Point } from '@helpers/Point.js';
+import { Polygon } from '@helpers/Polygon.js';
 
 /* ========================================================================== */
 

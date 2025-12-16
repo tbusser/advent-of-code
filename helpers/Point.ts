@@ -36,30 +36,13 @@ export class Point {
 	/* ---------------------------------------------------------------------- */
 
 	/**
-	 * Tests whether a horizontal ray extending to the right from this point
-	 * intersects the line segment defined by points a and b.
+	 * Calculates the Manhattan distance between this point and another.
 	 *
-	 * This method is typically used as part of a ray-casting (odd–even rule)
-	 * point-in-polygon test. It returns true if the segment crosses the
-	 * horizontal line at this point’s y-coordinate and the intersection
-	 * occurs to the right of the point.
-	 *
-	 * @param a The first endpoint of the line segment
-	 * @param b The second endpoint of the line segment
-	 * @returns true if the ray from this point intersects the segment;
-	 *          otherwise false
+	 * @param other - The other point.
+	 * @returns The Manhattan distance between the two points.
 	 */
-	public rayIntersectsSegment(a: Point, b: Point): boolean {
-		return (
-			// Check if point A is above the point and if point B is above it.
-			// When both checks give the same result A and B are either above
-			// or below the point and thus can't intersect.
-			a.y > this.y !== b.y > this.y &&
-			// Compute the x-coordinate where the segment intersects the
-			// horizontal line at this.y and check whether that intersection
-			// lies to the right of the point.
-			this.x < ((b.x - a.x) * (this.y - a.y)) / (b.y - a.y) + a.x
-		);
+	public distanceTo(other: Point): number {
+		return Math.abs(this.x - other.x) + Math.abs(this.y - other.y);
 	}
 
 	/**
@@ -97,5 +80,40 @@ export class Point {
 	 */
 	public orientation(a: Point, b: Point): number {
 		return (b.x - a.x) * (this.y - a.y) - (b.y - a.y) * (this.x - a.x);
+	}
+
+	/**
+	 * Tests whether a horizontal ray extending to the right from this point
+	 * intersects the line segment defined by points a and b.
+	 *
+	 * This method is typically used as part of a ray-casting (odd–even rule)
+	 * point-in-polygon test. It returns true if the segment crosses the
+	 * horizontal line at this point’s y-coordinate and the intersection
+	 * occurs to the right of the point.
+	 *
+	 * @param a The first endpoint of the line segment
+	 * @param b The second endpoint of the line segment
+	 * @returns true if the ray from this point intersects the segment;
+	 *          otherwise false
+	 */
+	public rayIntersectsSegment(a: Point, b: Point): boolean {
+		return (
+			// Check if point A is above the point and if point B is above it.
+			// When both checks give the same result A and B are either above
+			// or below the point and thus can't intersect.
+			a.y > this.y !== b.y > this.y &&
+			// Compute the x-coordinate where the segment intersects the
+			// horizontal line at this.y and check whether that intersection
+			// lies to the right of the point.
+			this.x < ((b.x - a.x) * (this.y - a.y)) / (b.y - a.y) + a.x
+		);
+	}
+
+	public toString(): string {
+		return `Point(${this.x}, ${this.y})`;
+	}
+
+	public toTuple(): readonly [number, number] {
+		return [this.x, this.y];
 	}
 }
