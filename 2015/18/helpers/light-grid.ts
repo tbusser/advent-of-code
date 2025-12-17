@@ -75,7 +75,7 @@ export class LightGrid extends BaseGrid<boolean> {
 			}
 
 			let switchedOnNeighbors: number = 0;
-			this.forEachNeighbor(index, (_, __, value) => {
+			this.forEachNeighbor(index, (value) => {
 				if (value) switchedOnNeighbors++;
 			}, directions);
 
