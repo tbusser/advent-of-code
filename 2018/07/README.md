@@ -12,7 +12,7 @@ After reading the problem statement, it seemed the input described a graph and t
 
 ### Optimal solution
 
-Based on feedback from ChatGTP there were several things I could to do optimize my solution. These were the biggest changes needed to make it more efficient:
+Based on feedback from ChatGPT there were several things I could do to optimize my solution. These were the biggest changes needed to make it more efficient:
 
 - Regex was more complex than needed; the from/to nodes are always in the same position.
 - Graph + priority queue overkill → switching to maps + arrays almost halved runtime.
