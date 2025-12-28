@@ -4,8 +4,6 @@ Rating: **Easy**
 
 ## Part 1
 
-**Approach:** Topological sort using Kahn’s algorithm
-
 ### My solution
 
 After reading the problem statement, it seemed the input described a graph and the processing order could use a priority queue. Based on these assumptions, I implemented my solution.
@@ -21,9 +19,13 @@ Based on feedback from ChatGPT there were several things I could do to optimize 
 
 Using the priority queue was not wrong but given the rather small input for the challenge it was a bit overkill. It would probably make for a better generic solution.
 
-## Part 2
+### Insights
 
-**Approach:** DAG (Directed Acyclic Graph) scheduling / Parallel task scheduling with dependencies
+- _Problem type_: Topological sort using Kahn’s algorithm
+- _Median runtime for my solution[^1]_: 987.05450µs
+- _Median runtime for optimal solution[^1]_: 568.22200µs
+
+## Part 2
 
 ### My solution
 
@@ -32,3 +34,10 @@ Part 2 was a nice extension of Part 1. For my solution I did use the optimal ver
 ### Optimal solution
 
 There were no suggested improvements for my part 2 solution.
+
+### Insights
+
+- _Problem type_: DAG (Directed Acyclic Graph) scheduling / Parallel task scheduling with dependencies
+- _Median runtime for my solution[^1]_: 708.82850µs
+
+[^1]: Median runtime was determined over 50 samples.
