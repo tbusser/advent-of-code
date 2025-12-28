@@ -1,7 +1,5 @@
 # Day 7: The Sum of Its Parts
 
-Rating: **Easy**
-
 ## Part 1
 
 ### My solution
@@ -21,6 +19,7 @@ Using the priority queue was not wrong but given the rather small input for the 
 
 ### Insights
 
+- _Perceived difficulty_: Easy
 - _Problem type_: Topological sort using Kahn’s algorithm
 - _Median runtime for my solution[^1]_: 987.05450µs
 - _Median runtime for optimal solution[^1]_: 568.22200µs
@@ -37,6 +36,7 @@ There were no suggested improvements for my part 2 solution.
 
 ### Insights
 
+- _Perceived difficulty_: Easy
 - _Problem type_: DAG (Directed Acyclic Graph) scheduling / Parallel task scheduling with dependencies
 - _Median runtime for my solution[^1]_: 708.82850µs
 
