@@ -1,13 +1,37 @@
 # {Title}
 
-Rating: **<rating>**
+## Part 1
 
-## Challenge description
+### My solution
 
-### Part One
+### Optimal solution
 
-{PartOne}
+Based on feedback from ChatGPT there were some things I could do to optimize my solution:
 
-### Part Two
+-
 
-{PartTwo}
+### Insights
+
+- _Perceived difficulty_:
+- _Problem type_:
+- _Median runtime for my solution[^1]_:
+- _Median runtime for optimal solution[^1]_:
+
+## Part 2
+
+### My solution
+
+### Optimal solution
+
+Based on feedback from ChatGPT there were some things I could do to optimize my solution:
+
+-
+
+### Insights
+
+- _Perceived difficulty_:
+- _Problem type_:
+- _Median runtime for my solution[^1]_:
+- _Median runtime for optimal solution[^1]_:
+
+[^1]: Median runtime was determined over 50 samples.
