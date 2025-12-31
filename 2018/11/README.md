@@ -28,7 +28,7 @@ For part 2 I started with modifying my solution for part 1. Everything which was
 
 ### Optimal solution
 
-I shared my solution with ChatGPT and asked for optimization suggestions. As hinted at during part 1, the suggestion was to implement a summed area table (SAT). My implementation had a complexity of O(n<sup>4</sup>) because the square sum cost would grow with the square size. The initial solution was O(n<sup>4</sup>) because the work per square grows with its size. Using a SAT, each square sum is constant-time, reducing total complexity to O(n<sup>3</sup>). For the grid size of 300 cells in each direction, my solution had to perform billions of operations versus 9 million iterations for the SAT solution.
+I shared my solution with ChatGPT and asked for optimization suggestions. As hinted at during part 1, the suggestion was to implement a summed area table (SAT). The initial solution was O(n<sup>4</sup>) because the work per square grows with its size. Using a SAT, each square sum is constant-time, reducing total complexity to O(n<sup>3</sup>). For the grid size of 300 cells in each direction, my solution had to perform billions of operations versus 9 million iterations for the SAT solution.
 
 #### Building the summed-area table
 
