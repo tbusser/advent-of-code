@@ -30,7 +30,7 @@ export function parseInput(input: string): Input {
 	});
 
 	return {
-		// Transpose the coordinate so the top-left coordinate it position at
+		// Transpose the coordinate so the top-left coordinate it positioned at
 		// x=0 and y=0.
 		coordinates: coordinates.map(([x, y]) => ([x - minX, y - minY])),
 		// The height and width are 1 more than the highest index.
