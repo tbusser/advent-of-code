@@ -7,9 +7,7 @@ export function countInchClaims(claims: Claim[], cellCount: number): Uint16Array
 
 	for (const claim of claims) {
 		for (const row of claim) {
-			for (let index = row[0]; index <= row[1]; index++) {
-				cells[index]++;
-			}
+			for (let index = row[0]; index <= row[1]; index++) cells[index]++;
 		}
 	}
 
