@@ -34,4 +34,4 @@ function solver(input: string): string {
 export default {
 	prompt: 'placeholder prompt',
 	solver
-} satisfies Solution;
+} satisfies Solution<string>;
