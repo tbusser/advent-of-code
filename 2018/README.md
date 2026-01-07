@@ -14,8 +14,6 @@ If I find a better solution, I’ll create it. My original solution files are su
 
 A solution is optimal if it finds the answer in competitive time while remaining readable. In other words, a pragmatic solution is preferred over one that implements a fancy algorithm that would be overkill for the scope of Advent of Code challenges.
 
-> A solution is optimal if it finds the answer in competitive time while remaining readable. Pragmatic solutions are preferred over unnecessarily complex algorithms.
-
 ## 🗓 Challenge index
 
 |                                              | Part 1 | Part 2 |
